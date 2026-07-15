@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
+  body{font-family:'Golos Text',system-ui,sans-serif;color:#14345E;background:#E14B2E;-webkit-font-smoothing:antialiased}
+  a{color:#14345E;text-decoration:none}
+  a:hover{color:#14345E}
+  ::selection{background:#14345E;color:#fff}
+  @keyframes riseIn{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes riseTilt{from{opacity:0;transform:translateY(34px) rotate(-3.5deg)}to{opacity:1;transform:translateY(0) rotate(-3.5deg)}}
+  .rv{opacity:0;animation:riseIn .72s cubic-bezier(.19,.72,.23,1) both}
+  .rvt{opacity:0;animation:riseTilt .72s cubic-bezier(.19,.72,.23,1) both}
+  .d1{animation-delay:.06s}.d2{animation-delay:.14s}.d3{animation-delay:.24s}
+  .d4{animation-delay:.36s}.d5{animation-delay:.5s}.d6{animation-delay:.62s}.d7{animation-delay:.74s}
+  .lvl{transition:transform .3s cubic-bezier(.19,.72,.23,1),box-shadow .3s;isolation:isolate}
+  .lvl:hover{transform:translateY(-10px) rotate(0deg)!important}
+  details.faq summary{list-style:none;cursor:pointer}
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq[open] .faq-plus{transform:rotate(45deg)}
+  .step:hover .step-num{background:#E14B2E;color:#fff}
+</style>
+</helmet>
+
+<div style="width:100%;max-width:1440px;margin:0 auto;background:#E14B2E;overflow:hidden">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 56px;background:#E14B2E;border-bottom:1px solid rgba(255,255,255,.22)">
+    <a href="#" style="display:flex;align-items:center;gap:14px">
+      <div style="width:48px;height:48px;flex:none;position:relative;background:#fff;border-radius:3px;padding:5px">
+        <img src="./assets/aur-herb.svg" alt="АЮР" style="width:100%;height:100%;object-fit:contain;display:block">
+      </div>
+      <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:1.1">Ассоциация<br>юристов России</div>
+    </a>
+
+    <nav style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:700;letter-spacing:.01em">
+      <a href="#about" style="color:#fff" style-hover="color:#14345E">О диктанте</a>
+      <a href="#levels" style="color:#fff" style-hover="color:#14345E">Уровни</a>
+      <a href="#results" style="color:#fff" style-hover="color:#14345E">Результаты</a>
+      <a href="#faq" style="color:#fff" style-hover="color:#14345E">FAQ</a>
+    </nav>
+
+    <a href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;background:#14345E;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px" style-hover="background:#0d2340">Пройти диктант</a>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section style="position:relative;background:#E14B2E;overflow:hidden">
+    <!-- region dot field (active map element) -->
+    <div ref="{{ dotsRef }}" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none;will-change:transform">
+      <div style="position:absolute;inset:0;pointer-events:auto">
+        <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="46">
+          <span style="position:absolute;border-radius:50%;background:rgba(19,42,74,.34);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};transition:transform .3s ease,background .3s ease;cursor:crosshair" style-hover="background:#14345E;transform:scale(2.6)"></span>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="position:relative;z-index:2;padding:66px 56px 76px">
+      <!-- kicker -->
+      <div class="rv d1" style="display:inline-flex;align-items:center;gap:14px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#14345E;background:#fff;padding:9px 18px">
+        <span>Всероссийская акция</span>
+        <span style="width:6px;height:6px;background:#E14B2E;transform:rotate(45deg)"></span>
+        <span>3–12 декабря 2026</span>
+      </div>
+
+      <!-- dynamic headline -->
+      <h1 style="margin:26px 0 0;font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;color:#fff;line-height:.94">
+        <span class="rv d2" style="display:block;font-size:38px;font-weight:500;color:#fff;opacity:.92">Всероссийский</span>
+        <span class="rv d3" style="display:block;font-size:172px;margin-top:4px">Правовой</span>
+        <span class="rv d4" style="display:flex;align-items:baseline;gap:26px;flex-wrap:wrap;margin-top:8px">
+          <span style="font-size:172px;display:inline-block;color:#14345E;transform:rotate(-3.5deg);transform-origin:left center">Диктант</span>
+          <span style="font-size:46px;font-weight:500;color:#fff;opacity:.85">(юридический)</span>
+        </span>
+      </h1>
+
+      <p class="rv d4" style="margin:34px 0 0;max-width:560px;font-size:19px;line-height:1.55;font-weight:500;color:#fff">Миллионы участников по всей стране проверяют свою правовую грамотность. Присоединяйся к национальной акции Ассоциации юристов России.</p>
+
+      <!-- countdown as graphic element -->
+      <sc-if value="{{ showTimer }}" hint-placeholder-val="{{ true }}">
+        <div class="rv d5" style="margin:44px 0 0">
+          <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#14345E;margin-bottom:2px">До старта диктанта</div>
+          <div style="display:flex;align-items:flex-end;gap:6px;font-family:'Oswald',sans-serif;color:#fff;font-weight:700;line-height:1">
+            <div style="text-align:center">
+              <div style="font-size:132px;font-variant-numeric:tabular-nums;line-height:1">{{ d }}</div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#14345E;margin-top:10px">дней</div>
+            </div>
+            <div style="font-size:100px;color:#14345E;padding-bottom:28px;line-height:1">:</div>
+            <div style="text-align:center">
+              <div style="font-size:132px;font-variant-numeric:tabular-nums;line-height:1">{{ h }}</div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#14345E;margin-top:10px">часов</div>
+            </div>
+            <div style="font-size:100px;color:#14345E;padding-bottom:28px;line-height:1">:</div>
+            <div style="text-align:center">
+              <div style="font-size:132px;font-variant-numeric:tabular-nums;line-height:1">{{ m }}</div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#14345E;margin-top:10px">минут</div>
+            </div>
+            <div style="font-size:100px;color:#14345E;padding-bottom:28px;line-height:1">:</div>
+            <div style="text-align:center">
+              <div style="font-size:132px;font-variant-numeric:tabular-nums;line-height:1;color:#14345E">{{ s }}</div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#14345E;margin-top:10px">секунд</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div class="rv d6" style="display:flex;align-items:center;gap:28px;margin-top:44px">
+        <a href="#" style="display:inline-flex;align-items:center;gap:12px;background:#14345E;color:#fff;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px" style-hover="background:#0d2340">Присоединиться →</a>
+        <a href="#levels" style="font-size:16px;font-weight:700;color:#fff;border-bottom:2px solid rgba(255,255,255,.55);padding-bottom:3px" style-hover="color:#14345E;border-color:#14345E">Выбрать уровень</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THREE LEVELS ============ -->
+  <section id="levels" style="position:relative;background:#FAF5EE;padding:82px 56px 108px">
+    <!-- section header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:14px">
+      <div>
+        <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Уровни диктанта</div>
+        <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:76px;line-height:.96;font-weight:700;text-transform:uppercase;color:#14345E">Выбери<br>свой уровень</h2>
+      </div>
+      <p style="margin:0 0 8px;max-width:340px;font-size:16px;line-height:1.55;font-weight:500;color:#5a6478;text-align:right">Три блока по уровню подготовки — от повседневных знаний до профессиональной юриспруденции. Каждый доступен онлайн весь период проведения.</p>
+    </div>
+
+    <!-- overlapping / offset cards -->
+    <div style="display:flex;align-items:flex-start;gap:22px;padding-top:72px">
+
+      <!-- level 01 -->
+      <div class="lvl" style="flex:1;position:relative;background:#14345E;color:#fff;padding:38px 34px 34px;transform:rotate(-1.4deg);box-shadow:0 26px 50px -30px rgba(20,52,94,.6)">
+        <div style="position:absolute;top:-38px;left:24px;font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;line-height:1;color:#E14B2E;pointer-events:none">01</div>
+        <div style="height:64px"></div>
+        <h3 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;text-transform:uppercase">Базовый</h3>
+        <p style="margin:16px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#c9d3e4">Общие правовые знания для всех, кто хочет проверить грамотность в повседневных ситуациях.</p>
+        <div style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#9fb0cc">Для всех желающих</div>
+      </div>
+
+      <!-- level 02 (accent, dominant) -->
+      <div class="lvl" style="flex:1;position:relative;background:#E14B2E;color:#fff;padding:38px 34px 34px;transform:translateY(46px) rotate(1.2deg);box-shadow:0 30px 55px -28px rgba(225,75,46,.65);z-index:3">
+        <div style="position:absolute;top:-38px;left:24px;font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;line-height:1;color:#14345E;pointer-events:none">02</div>
+        <div style="position:absolute;top:20px;right:22px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:#fff;color:#E14B2E;padding:5px 10px;z-index:1">Популярный</div>
+        <div style="height:64px"></div>
+        <h3 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;text-transform:uppercase">Профессиональный</h3>
+        <p style="margin:16px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#ffe4dc">Углублённые вопросы для юристов, студентов профильных специальностей и всех, кто работает с правом.</p>
+        <div style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.32);font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#ffd0c4">Юристы и студенты</div>
+      </div>
+
+      <!-- level 03 -->
+      <div class="lvl" style="flex:1;position:relative;background:#fff;color:#14345E;padding:38px 34px 34px;transform:translateY(12px) rotate(-1deg);box-shadow:0 26px 50px -32px rgba(20,52,94,.4);border:1px solid #e6ddd0">
+        <div style="position:absolute;top:-38px;left:24px;font-family:'Oswald',sans-serif;font-size:110px;font-weight:700;line-height:1;color:#E14B2E;pointer-events:none">03</div>
+        <div style="height:64px"></div>
+        <h3 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;text-transform:uppercase">Бизнес</h3>
+        <p style="margin:16px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#5a6478">Правовые аспекты предпринимательства для руководителей и специалистов компаний.</p>
+        <div style="margin-top:28px;padding-top:18px;border-top:1px solid #e6ddd0;font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#8a94a6">Руководители и специалисты</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="about" style="position:relative;background:#14345E;color:#fff;padding:86px 56px 96px">
+    <div style="max-width:520px">
+      <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Как это работает</div>
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.96;font-weight:700;text-transform:uppercase">Три шага<br>к участию</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:rgba(255,255,255,.16)">
+      <div class="step" style="background:#14345E;padding:40px 34px 44px">
+        <div class="step-num" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;background:#fff;color:#14345E;transition:background .3s,color .3s">1</div>
+        <h3 style="margin:28px 0 0;font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;text-transform:uppercase">Регистрация</h3>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#c9d3e4">Заполни короткую форму на сайте — имя, регион и уровень, который хочешь пройти.</p>
+      </div>
+      <div class="step" style="background:#14345E;padding:40px 34px 44px">
+        <div class="step-num" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;background:#fff;color:#14345E;transition:background .3s,color .3s">2</div>
+        <h3 style="margin:28px 0 0;font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;text-transform:uppercase">Диктант</h3>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#c9d3e4">Ответь на вопросы онлайн в удобное время в период проведения акции. Ограничение — 45 минут.</p>
+      </div>
+      <div class="step" style="background:#14345E;padding:40px 34px 44px">
+        <div class="step-num" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;background:#fff;color:#14345E;transition:background .3s,color .3s">3</div>
+        <h3 style="margin:28px 0 0;font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;text-transform:uppercase">Результат</h3>
+        <p style="margin:14px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#c9d3e4">Сразу узнай свой балл и получи именной сертификат участника с разбором ответов.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCALE / STATS ============ -->
+  <section id="results" style="position:relative;background:#E14B2E;color:#fff;padding:82px 56px 92px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.96;font-weight:700;text-transform:uppercase;color:#14345E">Масштаб<br>акции</h2>
+      <p style="margin:0 0 10px;max-width:360px;font-size:16px;line-height:1.55;font-weight:500;color:#fff;text-align:right">С каждым годом Правовой диктант охватывает всё больше участников и регионов страны.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px">
+      <div style="border-top:3px solid #14345E;padding-top:20px">
+        <div style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#fff">1.5<span style="font-size:44px">млн</span></div>
+        <div style="margin-top:14px;font-size:15px;font-weight:600;color:#14345E">участников в прошлом году</div>
+      </div>
+      <div style="border-top:3px solid #14345E;padding-top:20px">
+        <div style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#fff">85</div>
+        <div style="margin-top:14px;font-size:15px;font-weight:600;color:#14345E">регионов России</div>
+      </div>
+      <div style="border-top:3px solid #14345E;padding-top:20px">
+        <div style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#fff">40+</div>
+        <div style="margin-top:14px;font-size:15px;font-weight:600;color:#14345E">стран-участниц</div>
+      </div>
+      <div style="border-top:3px solid #14345E;padding-top:20px">
+        <div style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#fff">7</div>
+        <div style="margin-top:14px;font-size:15px;font-weight:600;color:#14345E">лет проведения</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARTNERS ============ -->
+  <section style="position:relative;background:#FAF5EE;padding:72px 56px 80px">
+    <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:34px;text-align:center">Организаторы и партнёры</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
+        <div style="height:96px;background:#fff;border:1px solid #e6ddd0;display:flex;align-items:center;justify-content:center;padding:14px">
+          <img src="{{ p.src }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:contain;display:block">
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" style="position:relative;background:#FAF5EE;padding:20px 56px 96px">
+    <div style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start">
+      <div style="position:sticky;top:96px">
+        <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Вопросы</div>
+        <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:64px;line-height:.96;font-weight:700;text-transform:uppercase;color:#14345E">Частые<br>вопросы</h2>
+        <p style="margin:22px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#5a6478">Не нашли ответ? Напишите нам — <a href="mailto:diktant@alrf.ru" style="color:#E14B2E;border-bottom:1px solid #E14B2E">diktant@alrf.ru</a></p>
+      </div>
+
+      <div>
+        <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+          <details class="faq" style="border-bottom:1px solid #ddd3c4;padding:8px 0">
+            <summary style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0;font-family:'Oswald',sans-serif;font-size:22px;font-weight:500;text-transform:uppercase;color:#14345E">
+              <span>{{ q.q }}</span>
+              <span class="faq-plus" style="flex:none;width:26px;height:26px;position:relative;transition:transform .3s;color:#E14B2E;font-size:30px;line-height:.8;font-weight:400">+</span>
+            </summary>
+            <p style="margin:0 0 20px;padding-right:50px;font-size:16px;line-height:1.65;font-weight:500;color:#5a6478">{{ q.a }}</p>
+          </details>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section style="position:relative;background:#14345E;color:#fff;padding:96px 56px;text-align:center;overflow:hidden">
+    <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:20px">3–12 декабря 2026</div>
+    <h2 style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.96;font-weight:700;text-transform:uppercase">Проверь свою<br>правовую грамотность</h2>
+    <a href="#" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;background:#E14B2E;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px" style-hover="background:#c93d22">Пройти диктант →</a>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#0d2340;color:#fff;padding:56px 56px 40px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;flex:none;background:#fff;border-radius:3px;padding:6px">
+          <img src="./assets/aur-herb.svg" alt="АЮР" style="width:100%;height:100%;object-fit:contain;display:block">
+        </div>
+        <div style="font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.2">Ассоциация<br>юристов России</div>
+      </div>
+      <div style="display:flex;gap:72px;flex-wrap:wrap">
+        <div>
+          <div style="font-family:'Oswald',sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#7f8ba6;margin-bottom:16px">Диктант</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:15px;font-weight:600">
+            <a href="#about" style="color:#fff" style-hover="color:#E14B2E">О диктанте</a>
+            <a href="#levels" style="color:#fff" style-hover="color:#E14B2E">Уровни</a>
+            <a href="#results" style="color:#fff" style-hover="color:#E14B2E">Результаты</a>
+            <a href="#faq" style="color:#fff" style-hover="color:#E14B2E">FAQ</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Oswald',sans-serif;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#7f8ba6;margin-bottom:16px">Контакты</div>
+          <div style="display:flex;flex-direction:column;gap:11px;font-size:15px;font-weight:600">
+            <a href="mailto:diktant@alrf.ru" style="color:#fff" style-hover="color:#E14B2E">diktant@alrf.ru</a>
+            <a href="tel:+74956201600" style="color:#fff" style-hover="color:#E14B2E">+7 (495) 620-16-00</a>
+            <a href="#" style="color:#fff" style-hover="color:#E14B2E">Телеграм-канал</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:24px;font-size:13px;font-weight:500;color:#7f8ba6">
+      <div>© 2026 Ассоциация юристов России. Всероссийский правовой (юридический) диктант.</div>
+      <div style="display:flex;gap:24px">
+        <a href="#" style="color:#7f8ba6" style-hover="color:#fff">Политика конфиденциальности</a>
+        <a href="#" style="color:#7f8ba6" style-hover="color:#fff">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1440, &quot;height&quot;: 3800 },
+  &quot;showTimer&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot; }
+}">
+class Component extends DCLogic {
+  state = { d: '00', h: '00', m: '00', s: '00' };
+
+  constructor(props){
+    super(props);
+    this.dotsRef = React.createRef();
+    this._onScroll = () => {
+      if (!this.dotsRef.current) return;
+      const y = window.scrollY || window.pageYOffset || 0;
+      this.dotsRef.current.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+    };
+  }
+
+  componentDidMount() {
+    this.tick();
+    this._t = setInterval(() => this.tick(), 1000);
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+  }
+  componentWillUnmount() {
+    if (this._t) clearInterval(this._t);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+  tick() {
+    const target = new Date('2026-12-03T00:00:00+03:00').getTime();
+    let diff = Math.max(0, target - Date.now());
+    const day = Math.floor(diff / 86400000); diff -= day * 86400000;
+    const hr  = Math.floor(diff / 3600000);  diff -= hr * 3600000;
+    const mn  = Math.floor(diff / 60000);    diff -= mn * 60000;
+    const sc  = Math.floor(diff / 1000);
+    const p = (n) => String(n).padStart(2, '0');
+    this.setState({ d: String(day), h: p(hr), m: p(mn), s: p(sc) });
+  }
+
+  makeDots() {
+    const dots = [];
+    let seed = 1337;
+    const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
+    for (let i = 0; i < 82; i++) {
+      dots.push({
+        left: (2 + rnd() * 95).toFixed(2) + '%',
+        top: (5 + rnd() * 90).toFixed(2) + '%',
+        size: (4 + rnd() * 8).toFixed(1) + 'px',
+      });
+    }
+    return dots;
+  }
+
+  renderVals() {
+    if (!this._dots) this._dots = this.makeDots();
+    return {
+      d: this.state.d,
+      h: this.state.h,
+      m: this.state.m,
+      s: this.state.s,
+      dots: this._dots,
+      dotsRef: this.dotsRef,
+      showTimer: this.props.showTimer ?? true,
+      partners: [
+        { id: 'v2-partner-1', name: 'АЮР', src: './assets/logo-aur.svg' },
+        { id: 'v2-partner-2', name: 'Минюст России', src: './assets/logo-minjust.svg' },
+        { id: 'v2-partner-3', name: 'МГЮА', src: './assets/logo-mgua.svg' },
+        { id: 'v2-partner-4', name: 'ТАСС', src: './assets/logo-tass.svg' },
+      ],
+      faq: [
+        { q: 'Кто может участвовать?', a: 'Участие открыто для всех желающих без ограничений по возрасту, образованию и профессии — от школьников до практикующих юристов.' },
+        { q: 'Сколько это стоит?', a: 'Участие в диктанте полностью бесплатное на всех уровнях.' },
+        { q: 'Сколько времени даётся?', a: 'На прохождение отводится 45 минут. Пройти диктант можно в любой момент в период с 3 по 12 декабря 2026 года.' },
+        { q: 'Получу ли я сертификат?', a: 'Да. Сразу после завершения каждому участнику выдаётся именной электронный сертификат с итоговым баллом.' },
+        { q: 'Можно ли пройти повторно?', a: 'Каждый уровень проходится один раз. Но вы можете попробовать себя на нескольких уровнях сложности.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

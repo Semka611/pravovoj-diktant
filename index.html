@@ -25,13 +25,13 @@
 </style>
 </helmet>
 
-<div style="width:100%;max-width:1440px;margin:0 auto;background:#fff">
+<div style="width:100%;background:#fff">
 
   <!-- ============ HEADER ============ -->
   <header style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:18px 56px;border-bottom:1px solid #dfe3ea;position:sticky;top:0;background:#fff;z-index:20">
     <a href="#" style="display:flex;align-items:center;gap:14px">
       <div style="width:46px;height:46px;flex:none;position:relative;border:1px solid #dfe3ea">
-        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="aur-herb" shape="rect" src="./assets/aur-herb.svg" hint-size="46px,46px" style="width:46px;height:46px"></x-import>
+        <img src="./assets/aur-herb.svg" alt="АЮР" width="46" height="46" style="width:46px;height:46px;display:block">
       </div>
       <div style="line-height:1.05">
         <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#14345E">Ассоциация<br>юристов России</div>
@@ -52,9 +52,6 @@
 
   <!-- ============ HERO ============ -->
   <section style="position:relative;background:#14345E;color:#fff;overflow:hidden">
-    <sc-if value="{{ showMap }}" hint-placeholder-val="{{ true }}">
-      <div style="position:absolute;inset:0;pointer-events:none;opacity:.14;background:url('./assets/map-russia.svg') no-repeat 108% 42% / 62% auto;-webkit-mask-image:linear-gradient(to right,transparent 45%,#000 78%);mask-image:linear-gradient(to right,transparent 45%,#000 78%)"></div>
-    </sc-if>
 
     <div style="position:relative;padding:60px 56px 64px">
       <!-- meta rule -->
@@ -233,7 +230,7 @@
       </div>
       <!-- map -->
       <div style="position:relative;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.16)">
-        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ru-map-scale" shape="rect" fit="contain" src="./assets/map-russia.svg" hint-size="100%,100%" style="width:100%;height:100%"></x-import>
+        <img src="./assets/map-russia.svg" alt="Карта регионов России" style="width:100%;height:100%;object-fit:contain;display:block">
       </div>
     </div>
   </section>
@@ -250,7 +247,7 @@
       <div style="font-size:16px;font-weight:700;line-height:1.3;color:#14345E">Генеральный<br>информационный партнёр</div>
       <div style="display:flex">
         <div style="width:200px;height:78px;border:1px solid #d3d6dc;background:#fff;position:relative">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="p-tass" shape="rect" fit="contain" src="./assets/logo-tass.svg" hint-size="200px,78px" style="width:100%;height:100%"></x-import>
+          <img src="./assets/logo-tass.svg" alt="ТАСС" style="width:100%;height:100%;object-fit:contain;display:block">
         </div>
       </div>
     </div>
@@ -259,10 +256,10 @@
     <div style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;padding:36px 0">
       <div style="font-size:16px;font-weight:700;line-height:1.3;color:#14345E">Стратегические<br>партнёры</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d3d6dc;border-left:1px solid #d3d6dc">
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="p-msal" shape="rect" fit="contain" src="./assets/logo-mgua.svg" hint-size="100%,120px" style="width:100%;height:100%"></x-import></div>
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="p-mid" shape="rect" fit="contain" src="./assets/logo-mid.svg" hint-size="100%,120px" style="width:100%;height:100%"></x-import></div>
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="p-rzd" shape="rect" fit="contain" src="./assets/logo-rzd.svg" hint-size="100%,120px" style="width:100%;height:100%"></x-import></div>
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="p-op" shape="rect" fit="contain" src="./assets/logo-op.svg" hint-size="100%,120px" style="width:100%;height:100%"></x-import></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-mgua.svg" alt="МГЮА" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-mid.svg" alt="МИД России" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-rzd.svg" alt="РЖД" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-op.svg" alt="Общественная палата РФ" style="width:100%;height:100%;object-fit:contain;display:block"></div>
       </div>
     </div>
   </section>
@@ -302,7 +299,7 @@
       <div>
         <div style="display:flex;align-items:center;gap:14px">
           <div style="width:46px;height:46px;flex:none;position:relative;border:1px solid rgba(255,255,255,.2)">
-            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="aur-herb-footer" shape="rect" src="./assets/aur-herb.svg" hint-size="46px,46px" style="width:46px;height:46px"></x-import>
+            <img src="./assets/aur-herb.svg" alt="АЮР" width="46" height="46" style="width:46px;height:46px;display:block">
           </div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.15">Ассоциация<br>юристов России</div>
         </div>
