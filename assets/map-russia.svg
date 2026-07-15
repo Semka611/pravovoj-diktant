@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" fill="none">
+  <rect width="800" height="480" fill="#14345E"/>
+  <path d="M92 248c38-62 96-98 168-104 52-4 98 8 142 34 28 17 54 18 82 4 44-22 88-28 132-12 36 14 68 38 92 72 18 26 28 56 30 88 2 34-8 66-28 94-24 34-58 58-98 70-42 12-84 10-124-6-34-14-66-16-98-2-46 20-94 24-140 10-52-16-96-48-124-92-18-28-28-60-28-94 0-22 4-44 14-62z" fill="#1a4478" stroke="#2f5f98" stroke-width="2"/>
+  <g fill="#E14B2E" opacity=".92">
+    <circle cx="210" cy="210" r="5"/><circle cx="250" cy="178" r="4"/><circle cx="290" cy="198" r="5"/>
+    <circle cx="330" cy="168" r="4"/><circle cx="370" cy="188" r="5"/><circle cx="410" cy="160" r="4"/>
+    <circle cx="450" cy="182" r="5"/><circle cx="490" cy="152" r="4"/><circle cx="530" cy="176" r="5"/>
+    <circle cx="570" cy="148" r="4"/><circle cx="610" cy="170" r="5"/><circle cx="650" cy="142" r="4"/>
+    <circle cx="230" cy="250" r="5"/><circle cx="270" cy="232" r="4"/><circle cx="310" cy="258" r="5"/>
+    <circle cx="350" cy="228" r="4"/><circle cx="390" cy="252" r="5"/><circle cx="430" cy="224" r="4"/>
+    <circle cx="470" cy="248" r="5"/><circle cx="510" cy="220" r="4"/><circle cx="550" cy="244" r="5"/>
+    <circle cx="590" cy="216" r="4"/><circle cx="630" cy="240" r="5"/><circle cx="670" cy="212" r="4"/>
+    <circle cx="250" cy="292" r="5"/><circle cx="290" cy="274" r="4"/><circle cx="330" cy="298" r="5"/>
+    <circle cx="370" cy="268" r="4"/><circle cx="410" cy="292" r="5"/><circle cx="450" cy="264" r="4"/>
+    <circle cx="490" cy="288" r="5"/><circle cx="530" cy="260" r="4"/><circle cx="570" cy="284" r="5"/>
+    <circle cx="610" cy="256" r="4"/><circle cx="650" cy="280" r="5"/><circle cx="690" cy="252" r="4"/>
+    <circle cx="270" cy="334" r="5"/><circle cx="310" cy="316" r="4"/><circle cx="350" cy="340" r="5"/>
+    <circle cx="390" cy="310" r="4"/><circle cx="430" cy="334" r="5"/><circle cx="470" cy="306" r="4"/>
+    <circle cx="510" cy="330" r="5"/><circle cx="550" cy="302" r="4"/><circle cx="590" cy="326" r="5"/>
+  </g>
+  <text x="32" y="44" fill="#9fb0cc" font-family="Arial,sans-serif" font-size="16" font-weight="700">???????-????????? · 89 ????????? ??</text>
+</svg>

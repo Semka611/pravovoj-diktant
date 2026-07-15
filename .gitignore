@@ -1,0 +1,6 @@
+node_modules/
+*.pdf
+.thumbnail
+uploads/
+export-pdf.mjs
+.DS_Store
