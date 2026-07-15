@@ -11,9 +11,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./placeholders.css">
+<link rel="stylesheet" href="./responsive.css">
 <style>
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
+  html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
   body{font-family:'Golos Text',system-ui,sans-serif;color:#14345E;background:#fff;-webkit-font-smoothing:antialiased}
   a{color:#14345E;text-decoration:none}
   a:hover{color:#E14B2E}
@@ -25,27 +27,27 @@
 </style>
 </helmet>
 
-<div style="width:100%;background:#fff">
+<div class="pg pg-v1" style="width:100%;background:#fff">
 
   <!-- ============ HEADER ============ -->
-  <header style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:18px 56px;border-bottom:1px solid #dfe3ea;position:sticky;top:0;background:#fff;z-index:20">
+  <header class="pg-header" style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:18px 56px;border-bottom:1px solid #dfe3ea;position:sticky;top:0;background:#fff;z-index:20">
     <a href="#" style="display:flex;align-items:center;gap:14px">
       <div style="width:46px;height:46px;flex:none;position:relative;border:1px solid #dfe3ea">
-        <img src="./assets/aur-herb.svg" alt="АЮР" width="46" height="46" style="width:46px;height:46px;display:block">
+        <div class="ph ph-icon" aria-hidden="true"></div>
       </div>
       <div style="line-height:1.05">
         <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#14345E">Ассоциация<br>юристов России</div>
       </div>
     </a>
 
-    <nav style="display:flex;align-items:center;gap:34px;font-size:15px;font-weight:600">
+    <nav class="pg-nav" style="display:flex;align-items:center;gap:34px;font-size:15px;font-weight:600">
       <a href="#about">О диктанте</a>
       <a href="#levels">Уровни</a>
       <a href="#results">Результаты</a>
       <a href="#faq">FAQ</a>
     </nav>
 
-    <a href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;background:#E14B2E;color:#fff;font-size:15px;font-weight:700;padding:13px 24px" style-hover="background:#c53c22">
+    <a class="pg-cta-header" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;background:#E14B2E;color:#fff;font-size:15px;font-weight:700;padding:13px 24px" style-hover="background:#c53c22">
       Пройти диктант
     </a>
   </header>
@@ -53,9 +55,9 @@
   <!-- ============ HERO ============ -->
   <section style="position:relative;background:#14345E;color:#fff;overflow:hidden">
 
-    <div style="position:relative;padding:60px 56px 64px">
+    <div class="pg-hero" style="position:relative;padding:60px 56px 64px">
       <!-- meta rule -->
-      <div style="display:flex;align-items:center;gap:16px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9fb0cc;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16)">
+      <div class="pg-hero-meta" style="display:flex;align-items:center;gap:16px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9fb0cc;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.16)">
         <span>Всероссийский</span>
         <span style="width:5px;height:5px;background:#E14B2E;transform:rotate(45deg)"></span>
         <span>3–12 декабря 2026</span>
@@ -63,7 +65,7 @@
         <span>Все субъекты РФ</span>
       </div>
 
-      <h1 style="margin:34px 0 0;font-size:104px;line-height:.92;font-weight:900;text-transform:uppercase">Правовой<br>диктант</h1>
+      <h1 class="pg-hero-title" style="margin:34px 0 0;font-size:104px;line-height:.92;font-weight:900;text-transform:uppercase">Правовой<br>диктант</h1>
 
       <p style="margin:26px 0 0;max-width:760px;font-size:19px;line-height:1.55;font-weight:400;color:#d6dfec">Ежегодная просветительская акция Ассоциации юристов России. Проверьте свой уровень правовой грамотности — от базовых знаний до профессиональной юриспруденции.</p>
 
@@ -71,28 +73,28 @@
       <sc-if value="{{ showTimer }}" hint-placeholder-val="{{ true }}">
         <div style="margin:40px 0 0">
           <div style="font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9fb0cc;margin-bottom:14px">До старта диктанта</div>
-          <div style="display:flex;align-items:flex-start;gap:0;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16)">
+          <div class="pg-countdown-row" style="display:flex;align-items:flex-start;gap:0;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16)">
             <div style="flex:1;padding:18px 22px 16px 0;border-right:1px solid rgba(255,255,255,.16)">
-              <div style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ d }}</div>
+              <div class="pg-cd-num" style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ d }}</div>
               <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fb0cc;margin-top:8px">дней</div>
             </div>
             <div style="flex:1;padding:18px 22px 16px;border-right:1px solid rgba(255,255,255,.16)">
-              <div style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ h }}</div>
+              <div class="pg-cd-num" style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ h }}</div>
               <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fb0cc;margin-top:8px">часов</div>
             </div>
             <div style="flex:1;padding:18px 22px 16px;border-right:1px solid rgba(255,255,255,.16)">
-              <div style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ m }}</div>
+              <div class="pg-cd-num" style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums">{{ m }}</div>
               <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fb0cc;margin-top:8px">минут</div>
             </div>
             <div style="flex:1;padding:18px 0 16px 22px">
-              <div style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;color:#E14B2E">{{ s }}</div>
+              <div class="pg-cd-num" style="font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;color:#E14B2E">{{ s }}</div>
               <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fb0cc;margin-top:8px">секунд</div>
             </div>
           </div>
         </div>
       </sc-if>
 
-      <div style="display:flex;align-items:center;gap:28px;margin-top:40px">
+      <div class="pg-hero-actions" style="display:flex;align-items:center;gap:28px;margin-top:40px">
         <a href="#" style="display:inline-flex;align-items:center;gap:10px;background:#E14B2E;color:#fff;font-size:17px;font-weight:700;padding:17px 34px" style-hover="background:#c53c22">Пройти диктант →</a>
         <a href="#levels" style="font-size:16px;font-weight:600;color:#fff;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:3px" style-hover="border-color:#E14B2E">Узнать об уровнях</a>
       </div>
@@ -100,21 +102,21 @@
   </section>
 
   <!-- ============ THREE LEVELS ============ -->
-  <section id="levels" style="padding:76px 56px 84px;background:#fff">
+  <section id="levels" class="pg-section" style="padding:76px 56px 84px;background:#fff">
     <!-- section header -->
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:1.5px solid #14345E">
+    <div class="pg-sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:1.5px solid #14345E">
       <div>
         <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:12px">01 — 03 · Уровни</div>
-        <h2 style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Три уровня диктанта</h2>
+        <h2 class="pg-sec-title" style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Три уровня диктанта</h2>
       </div>
-      <p style="margin:0;max-width:360px;font-size:15px;line-height:1.55;font-weight:400;color:#4a5a73;text-align:right">Выберите блок по уровню подготовки. Каждый доступен онлайн в течение всего периода проведения.</p>
+      <p class="pg-sec-desc" style="margin:0;max-width:360px;font-size:15px;line-height:1.55;font-weight:400;color:#4a5a73;text-align:right">Выберите блок по уровню подготовки. Каждый доступен онлайн в течение всего периода проведения.</p>
     </div>
 
     <!-- columns -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr">
+    <div class="pg-grid-3" style="display:grid;grid-template-columns:1fr 1fr 1fr">
 
       <!-- level 01 -->
-      <div style="padding:40px 40px 32px 0;border-right:1px solid #dfe3ea">
+      <div class="pg-level-col" style="padding:40px 40px 32px 0;border-right:1px solid #dfe3ea">
         <div style="display:flex;align-items:baseline;justify-content:space-between">
           <span style="font-size:15px;font-weight:800;color:#14345E">01</span>
           <div style="display:flex;gap:5px">
@@ -129,7 +131,7 @@
       </div>
 
       <!-- level 02 -->
-      <div style="padding:40px 40px 32px;border-right:1px solid #dfe3ea">
+      <div class="pg-level-col" style="padding:40px 40px 32px;border-right:1px solid #dfe3ea">
         <div style="display:flex;align-items:baseline;justify-content:space-between">
           <span style="font-size:15px;font-weight:800;color:#14345E">02</span>
           <div style="display:flex;gap:5px">
@@ -144,7 +146,7 @@
       </div>
 
       <!-- level 03 -->
-      <div style="padding:40px 0 32px 40px">
+      <div class="pg-level-col" style="padding:40px 0 32px 40px">
         <div style="display:flex;align-items:baseline;justify-content:space-between">
           <span style="font-size:15px;font-weight:800;color:#14345E">03</span>
           <div style="display:flex;gap:5px">
@@ -162,33 +164,33 @@
   </section>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <section id="about" style="padding:76px 56px 84px;background:#fff">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:1.5px solid #14345E">
+  <section id="about" class="pg-section" style="padding:76px 56px 84px;background:#fff">
+    <div class="pg-sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:1.5px solid #14345E">
       <div>
         <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:12px">Как это работает</div>
-        <h2 style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Три шага до результата</h2>
+        <h2 class="pg-sec-title" style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Три шага до результата</h2>
       </div>
-      <p style="margin:0;max-width:360px;font-size:15px;line-height:1.55;font-weight:400;color:#4a5a73;text-align:right">Диктант проходит онлайн — пройти можно из любой точки с 3 по 12 декабря.</p>
+      <p class="pg-sec-desc" style="margin:0;max-width:360px;font-size:15px;line-height:1.55;font-weight:400;color:#4a5a73;text-align:right">Диктант проходит онлайн — пройти можно из любой точки с 3 по 12 декабря.</p>
     </div>
 
     <!-- key stats band -->
-    <div style="display:flex;align-items:flex-start;border-bottom:1px solid #dfe3ea;margin-top:8px">
+    <div class="pg-stats-row" style="display:flex;align-items:flex-start;border-bottom:1px solid #dfe3ea;margin-top:8px">
       <div style="flex:1;padding:34px 32px 30px 0;border-right:1px solid #dfe3ea">
-        <div style="font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#14345E;font-variant-numeric:tabular-nums">33</div>
+        <div class="pg-stat-big" style="font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#14345E;font-variant-numeric:tabular-nums">33</div>
         <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4a5a73;margin-top:12px">вопроса</div>
       </div>
       <div style="flex:1;padding:34px 32px 30px;border-right:1px solid #dfe3ea">
-        <div style="font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#14345E;font-variant-numeric:tabular-nums">60</div>
+        <div class="pg-stat-big" style="font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#14345E;font-variant-numeric:tabular-nums">60</div>
         <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4a5a73;margin-top:12px">минут на прохождение</div>
       </div>
       <div style="flex:1;padding:34px 0 30px 32px">
-        <div style="font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#E14B2E;font-variant-numeric:tabular-nums">100</div>
+        <div class="pg-stat-big" style="font-size:64px;font-weight:800;line-height:1;letter-spacing:-.02em;color:#E14B2E;font-variant-numeric:tabular-nums">100</div>
         <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4a5a73;margin-top:12px">баллов максимум</div>
       </div>
     </div>
 
     <!-- steps -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:0">
+    <div class="pg-grid-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:0">
       <div style="padding:38px 40px 4px 0;border-right:1px solid #dfe3ea">
         <div style="font-size:13px;font-weight:800;letter-spacing:.04em;color:#E14B2E">01</div>
         <h3 style="margin:16px 0 0;font-size:22px;font-weight:800;color:#14345E">Регистрация</h3>
@@ -208,85 +210,85 @@
   </section>
 
   <!-- ============ SCALE + MAP ============ -->
-  <section id="results" style="position:relative;background:#14345E;color:#fff;overflow:hidden;padding:76px 56px 84px">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.16)">
+  <section id="results" class="pg-section" style="position:relative;background:#14345E;color:#fff;overflow:hidden;padding:76px 56px 84px">
+    <div class="pg-sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.16)">
       <div>
         <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:12px">Масштаб</div>
-        <h2 style="margin:0;font-size:46px;line-height:1.02;font-weight:800;max-width:640px">Диктант пишут во всех субъектах Российской Федерации</h2>
+        <h2 class="pg-sec-title" style="margin:0;font-size:46px;line-height:1.02;font-weight:800;max-width:640px">Диктант пишут во всех субъектах Российской Федерации</h2>
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center">
+    <div class="pg-scale-grid" style="display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center">
       <!-- stats -->
       <div>
         <div style="padding:40px 0 34px;border-bottom:1px solid rgba(255,255,255,.16)">
-          <div style="font-size:96px;font-weight:900;line-height:.9;font-variant-numeric:tabular-nums">1,5<span style="font-size:32px;font-weight:700"> млн</span></div>
+          <div class="pg-stat-big" style="font-size:96px;font-weight:900;line-height:.9;font-variant-numeric:tabular-nums">1,5<span style="font-size:32px;font-weight:700"> млн</span></div>
           <div style="font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9fb0cc;margin-top:16px">участников</div>
         </div>
         <div style="padding:34px 0 0">
-          <div style="font-size:64px;font-weight:900;line-height:.9;letter-spacing:-.02em;color:#fff">Все</div>
+          <div class="pg-stat-mid" style="font-size:64px;font-weight:900;line-height:.9;letter-spacing:-.02em;color:#fff">Все</div>
           <div style="font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9fb0cc;margin-top:16px">субъекты РФ · региональные площадки</div>
         </div>
       </div>
       <!-- map -->
       <div style="position:relative;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.16)">
-        <img src="./assets/map-russia.svg" alt="Карта регионов России" style="width:100%;height:100%;object-fit:contain;display:block">
+        <div class="ph ph-map">Карта регионов</div>
       </div>
     </div>
   </section>
 
   <!-- ============ PARTNERS ============ -->
-  <section style="padding:76px 56px 84px;background:#F2F2F2">
+  <section class="pg-section" style="padding:76px 56px 84px;background:#F2F2F2">
     <div style="padding-bottom:26px;border-bottom:1.5px solid #14345E">
       <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:12px">Партнёры</div>
-      <h2 style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Организаторы и партнёры</h2>
+      <h2 class="pg-sec-title" style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Организаторы и партнёры</h2>
     </div>
 
     <!-- general info partner -->
-    <div style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;padding:36px 0;border-bottom:1px solid #d3d6dc">
+    <div class="pg-partners-row" style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;padding:36px 0;border-bottom:1px solid #d3d6dc">
       <div style="font-size:16px;font-weight:700;line-height:1.3;color:#14345E">Генеральный<br>информационный партнёр</div>
       <div style="display:flex">
         <div style="width:200px;height:78px;border:1px solid #d3d6dc;background:#fff;position:relative">
-          <img src="./assets/logo-tass.svg" alt="ТАСС" style="width:100%;height:100%;object-fit:contain;display:block">
+          <div class="ph ph-logo">ТАСС</div>
         </div>
       </div>
     </div>
 
     <!-- strategic partners -->
-    <div style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;padding:36px 0">
-      <div style="font-size:16px;font-weight:700;line-height:1.3;color:#14345E">Стратегические<br>партнёры</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d3d6dc;border-left:1px solid #d3d6dc">
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-mgua.svg" alt="МГЮА" style="width:100%;height:100%;object-fit:contain;display:block"></div>
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-mid.svg" alt="МИД России" style="width:100%;height:100%;object-fit:contain;display:block"></div>
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-rzd.svg" alt="РЖД" style="width:100%;height:100%;object-fit:contain;display:block"></div>
-        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><img src="./assets/logo-op.svg" alt="Общественная палата РФ" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+    <div class="pg-partners-row" style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;padding:36px 0">
+      <div class="pg-partners-label" style="font-size:16px;font-weight:700;line-height:1.3;color:#14345E">Стратегические<br>партнёры</div>
+      <div class="pg-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d3d6dc;border-left:1px solid #d3d6dc">
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><div class="ph ph-logo">МГЮА</div></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><div class="ph ph-logo">МИД России</div></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><div class="ph ph-logo">РЖД</div></div>
+        <div style="height:120px;border-right:1px solid #d3d6dc;border-bottom:1px solid #d3d6dc;background:#fff;position:relative"><div class="ph ph-logo">Общественная палата РФ</div></div>
       </div>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section id="faq" style="padding:76px 56px 84px;background:#fff">
-    <div style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start">
-      <div style="position:sticky;top:110px">
+  <section id="faq" class="pg-section" style="padding:76px 56px 84px;background:#fff">
+    <div class="pg-faq-layout" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start">
+      <div class="pg-faq-sticky" style="position:sticky;top:110px">
         <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:12px">Вопросы</div>
-        <h2 style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Частые вопросы</h2>
+        <h2 class="pg-sec-title" style="margin:0;font-size:46px;line-height:1;font-weight:800;color:#14345E">Частые вопросы</h2>
       </div>
 
       <div style="border-top:1.5px solid #14345E">
         <details class="faq" style="border-bottom:1px solid #dfe3ea">
-          <summary style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Кто может участвовать?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
+          <summary class="pg-faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Кто может участвовать?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
           <p style="margin:0 0 26px;font-size:16px;line-height:1.6;color:#4a5a73;max-width:640px">Участие открыто для всех желающих независимо от возраста, профессии и региона. Достаточно выбрать подходящий уровень.</p>
         </details>
         <details class="faq" style="border-bottom:1px solid #dfe3ea">
-          <summary style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Нужно ли платить за участие?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
+          <summary class="pg-faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Нужно ли платить за участие?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
           <p style="margin:0 0 26px;font-size:16px;line-height:1.6;color:#4a5a73;max-width:640px">Нет. Участие в диктанте бесплатное для всех.</p>
         </details>
         <details class="faq" style="border-bottom:1px solid #dfe3ea">
-          <summary style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Когда я узнаю свой результат?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
+          <summary class="pg-faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Когда я узнаю свой результат?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
           <p style="margin:0 0 26px;font-size:16px;line-height:1.6;color:#4a5a73;max-width:640px">Результат отображается сразу после завершения диктанта — по количеству набранных баллов из 100 возможных.</p>
         </details>
         <details class="faq" style="border-bottom:1px solid #dfe3ea">
-          <summary style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Нужна ли предварительная регистрация?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
+          <summary class="pg-faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;font-size:21px;font-weight:700;color:#14345E">Нужна ли предварительная регистрация?<span class="pm" style="flex:none;font-size:28px;font-weight:400;color:#E14B2E;line-height:1">+</span></summary>
           <p style="margin:0 0 26px;font-size:16px;line-height:1.6;color:#4a5a73;max-width:640px">Да. Перед прохождением нужно зарегистрироваться на сайте и выбрать уровень диктанта.</p>
         </details>
       </div>
@@ -294,12 +296,12 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer style="background:#14345E;color:#fff;padding:60px 56px 40px">
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.16)">
+  <footer class="pg-section" style="background:#14345E;color:#fff;padding:60px 56px 40px">
+    <div class="pg-footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.16)">
       <div>
         <div style="display:flex;align-items:center;gap:14px">
           <div style="width:46px;height:46px;flex:none;position:relative;border:1px solid rgba(255,255,255,.2)">
-            <img src="./assets/aur-herb.svg" alt="АЮР" width="46" height="46" style="width:46px;height:46px;display:block">
+            <div class="ph ph-icon" aria-hidden="true"></div>
           </div>
           <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.15">Ассоциация<br>юристов России</div>
         </div>

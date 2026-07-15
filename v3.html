@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./placeholders.css">
+<link rel="stylesheet" href="./responsive.css">
 <style>
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
@@ -35,53 +37,53 @@
 </style>
 </helmet>
 
-<div style="width:100%;max-width:1440px;margin:0 auto;background:#F3F0E9">
+<div class="pg pg-v3" style="width:100%;max-width:1440px;margin:0 auto;background:#F3F0E9">
 
   <!-- ============ HEADER / MASTHEAD ============ -->
-  <header style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:20px 64px;border-bottom:1px solid #14345E">
+  <header class="pg-header" style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:20px 64px;border-bottom:1px solid #14345E">
     <a href="#" style="display:flex;align-items:center;gap:15px">
       <div style="width:46px;height:46px;flex:none">
-        <img src="./assets/aur-herb.svg" alt="АЮР" style="width:100%;height:100%;object-fit:contain;display:block">
+        <div class="ph ph-icon" aria-hidden="true"></div>
       </div>
       <div style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#14345E;line-height:1.25">Ассоциация<br>юристов России</div>
     </a>
 
-    <nav style="display:flex;align-items:center;gap:38px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;letter-spacing:.02em;color:#14345E">
+    <nav class="pg-nav" style="display:flex;align-items:center;gap:38px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;letter-spacing:.02em;color:#14345E">
       <a href="#about" class="nav-a">О диктанте</a>
       <a href="#levels" class="nav-a">Уровни</a>
       <a href="#results" class="nav-a">Результаты</a>
       <a href="#faq" class="nav-a">FAQ</a>
     </nav>
 
-    <a href="#" style="flex:none;display:inline-flex;align-items:center;gap:9px;background:#14345E;color:#F3F0E9;font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.03em;padding:13px 24px;border-radius:2px" style-hover="background:#0E2545">Пройти диктант</a>
+    <a class="pg-cta-header" href="#" style="flex:none;display:inline-flex;align-items:center;gap:9px;background:#14345E;color:#F3F0E9;font-family:'Manrope',sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.03em;padding:13px 24px;border-radius:2px" style-hover="background:#0E2545">Пройти диктант</a>
   </header>
 
   <!-- ============ HERO (navy, editorial) ============ -->
   <section style="background:#14345E;color:#EDE7DA">
-    <div style="max-width:1200px;margin:0 auto;padding:34px 64px 72px">
+    <div class="pg-hero" style="max-width:1200px;margin:0 auto;padding:34px 64px 72px">
 
       <!-- dateline rule -->
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(237,231,218,.28);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a9b6cc">
+      <div class="pg-hero-dateline" style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:20px;border-bottom:1px solid rgba(237,231,218,.28);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a9b6cc">
         <span style="display:inline-flex;align-items:center;gap:12px"><span style="width:7px;height:7px;background:#E14B2E;transform:rotate(45deg)"></span>Всероссийская просветительская акция</span>
         <span>Организатор — Ассоциация юристов России</span>
       </div>
 
       <!-- poster heading (the only grotesque display) -->
-      <h1 style="margin:44px 0 0;font-family:'Manrope',sans-serif;font-weight:800;text-transform:uppercase;color:#F3F0E9;line-height:.98;font-size:78px">
+      <h1 class="pg-hero-title" style="margin:44px 0 0;font-family:'Manrope',sans-serif;font-weight:800;text-transform:uppercase;color:#F3F0E9;line-height:.98;font-size:78px">
         Всероссийский<br>правовой диктант
       </h1>
-      <div style="margin-top:16px;font-family:'Manrope',sans-serif;font-size:26px;font-weight:500;letter-spacing:.02em;color:#a9b6cc">(юридический) · IX выпуск</div>
+      <div class="pg-hero-sub" style="margin-top:16px;font-family:'Manrope',sans-serif;font-size:26px;font-weight:500;letter-spacing:.02em;color:#a9b6cc">(юридический) · IX выпуск</div>
 
       <!-- editorial two-column body -->
-      <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin-top:56px;border-top:1px solid rgba(237,231,218,.28)">
+      <div class="pg-hero-body" style="display:grid;grid-template-columns:1.15fr 1fr;gap:0;margin-top:56px;border-top:1px solid rgba(237,231,218,.28)">
         <div style="padding:34px 52px 0 0;border-right:1px solid rgba(237,231,218,.28)">
-          <p style="margin:0;font-size:22px;line-height:1.6;color:#EDE7DA">Правовой диктант — ежегодная всероссийская акция, которая помогает гражданам оценить и повысить свою правовую грамотность, а обществу — увидеть, насколько уверенно люди знают и применяют свои права.</p>
+          <p class="pg-hero-lead" style="margin:0;font-size:22px;line-height:1.6;color:#EDE7DA">Правовой диктант — ежегодная всероссийская акция, которая помогает гражданам оценить и повысить свою правовую грамотность, а обществу — увидеть, насколько уверенно люди знают и применяют свои права.</p>
           <p style="margin:22px 0 0;font-size:17px;line-height:1.7;color:#b9c4d6">Написать диктант можно из любой точки страны и мира — онлайн, в любое удобное время в течение всего периода проведения.</p>
         </div>
 
         <div style="padding:34px 0 0 52px;display:flex;flex-direction:column">
           <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a9b6cc">Даты проведения</div>
-          <div style="margin-top:8px;font-family:'Manrope',sans-serif;font-size:52px;font-weight:800;color:#F3F0E9;line-height:1">3–12 декабря</div>
+          <div class="pg-hero-date" style="margin-top:8px;font-family:'Manrope',sans-serif;font-size:52px;font-weight:800;color:#F3F0E9;line-height:1">3–12 декабря</div>
           <div style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:600;color:#a9b6cc">2026 года</div>
 
           <p style="margin:26px 0 0;font-size:16px;line-height:1.7;color:#b9c4d6">Участие принимают жители всех субъектов Российской Федерации — от школьников до практикующих юристов. В прошлом году в диктанте приняли участие <span style="color:#EDE7DA;font-weight:700">более 1,5&nbsp;млн человек</span>.</p>
@@ -94,32 +96,32 @@
   </section>
 
   <!-- ============ THREE LEVELS (editorial columns) ============ -->
-  <section id="levels" style="background:#F3F0E9;padding:76px 64px 90px">
+  <section id="levels" class="pg-section" style="background:#F3F0E9;padding:76px 64px 90px">
     <div style="max-width:1200px;margin:0 auto">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:2px solid #14345E">
+      <div class="pg-sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;padding-bottom:26px;border-bottom:2px solid #14345E">
         <div>
           <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Уровни диктанта</div>
-          <h2 style="margin:0;font-family:'Manrope',sans-serif;font-size:46px;font-weight:800;color:#14345E;line-height:1">Три уровня участия</h2>
+          <h2 class="pg-sec-title" style="margin:0;font-family:'Manrope',sans-serif;font-size:46px;font-weight:800;color:#14345E;line-height:1">Три уровня участия</h2>
         </div>
-        <p style="margin:0 0 4px;max-width:400px;font-size:17px;line-height:1.6;color:#4a5568;text-align:right">Диктант разделён по глубине правовой подготовки. Каждый уровень доступен онлайн в течение всего периода проведения.</p>
+        <p class="pg-sec-desc" style="margin:0 0 4px;max-width:400px;font-size:17px;line-height:1.6;color:#4a5568;text-align:right">Диктант разделён по глубине правовой подготовки. Каждый уровень доступен онлайн в течение всего периода проведения.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr)">
-        <div class="lvl-col" style="padding:40px 34px 44px 0;border-right:1px solid #d6cfbf">
+      <div class="pg-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr)">
+        <div class="pg-level-col lvl-col" style="padding:40px 34px 44px 0;border-right:1px solid #d6cfbf">
           <div class="lvl-num" style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;color:#b0a894">01</div>
           <h3 style="margin:18px 0 0;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#14345E">Базовый</h3>
           <p style="margin:16px 0 0;font-size:18px;line-height:1.65;color:#3b4658">Общие правовые знания для повседневных ситуаций — подойдёт каждому гражданину, независимо от образования и профессии.</p>
           <div style="margin-top:26px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;color:#8a8578">Для всех желающих</div>
         </div>
 
-        <div class="lvl-col" style="padding:40px 34px 44px;border-right:1px solid #d6cfbf">
+        <div class="pg-level-col lvl-col" style="padding:40px 34px 44px;border-right:1px solid #d6cfbf">
           <div class="lvl-num" style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;color:#b0a894">02</div>
           <h3 style="margin:18px 0 0;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#14345E">Профессиональный</h3>
           <p style="margin:16px 0 0;font-size:18px;line-height:1.65;color:#3b4658">Углублённые вопросы для юристов, студентов профильных факультетов и всех, кто работает с правом.</p>
           <div style="margin-top:26px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;color:#8a8578">Юристы и студенты</div>
         </div>
 
-        <div class="lvl-col" style="padding:40px 0 44px 34px">
+        <div class="pg-level-col lvl-col" style="padding:40px 0 44px 34px">
           <div class="lvl-num" style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;color:#b0a894">03</div>
           <h3 style="margin:18px 0 0;font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#14345E">Бизнес</h3>
           <p style="margin:16px 0 0;font-size:18px;line-height:1.65;color:#3b4658">Правовые аспекты предпринимательства для руководителей и специалистов компаний.</p>
@@ -130,12 +132,12 @@
   </section>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <section id="about" style="background:#F3F0E9;padding:20px 64px 90px">
+  <section id="about" class="pg-section" style="background:#F3F0E9;padding:20px 64px 90px">
     <div style="max-width:1200px;margin:0 auto">
-      <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;padding-top:70px;border-top:1px solid #d6cfbf">
-        <div style="position:sticky;top:32px">
+      <div class="pg-faq-layout" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;padding-top:70px;border-top:1px solid #d6cfbf">
+        <div class="pg-faq-sticky" style="position:sticky;top:32px">
           <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Как это устроено</div>
-          <h2 style="margin:0;font-family:'Manrope',sans-serif;font-size:46px;font-weight:800;color:#14345E;line-height:1.02">От регистрации<br>до результата</h2>
+          <h2 class="pg-sec-title" style="margin:0;font-family:'Manrope',sans-serif;font-size:46px;font-weight:800;color:#14345E;line-height:1.02">От регистрации<br>до результата</h2>
           <p style="margin:24px 0 0;font-size:18px;line-height:1.65;color:#3b4658">Пройти диктант можно в любое удобное время в течение всего периода проведения — из дома, офиса или на региональной площадке.</p>
         </div>
 
@@ -167,18 +169,18 @@
   </section>
 
   <!-- ============ SCALE / MAP (map as illustration to the text) ============ -->
-  <section id="results" style="background:#F3F0E9;padding:20px 64px 96px">
+  <section id="results" class="pg-section" style="background:#F3F0E9;padding:20px 64px 96px">
     <div style="max-width:1200px;margin:0 auto;padding-top:70px;border-top:1px solid #d6cfbf">
-      <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:center">
+      <div class="pg-scale-grid" style="display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:center">
         <div>
           <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:16px">Масштаб акции</div>
-          <p style="margin:0;font-size:26px;line-height:1.5;color:#1c2a40">В диктанте принимают участие <b style="font-weight:700">все субъекты Российской Федерации</b> — от западных границ до Дальнего Востока.</p>
+          <p class="pg-scale-lead" style="margin:0;font-size:26px;line-height:1.5;color:#1c2a40">В диктанте принимают участие <b style="font-weight:700">все субъекты Российской Федерации</b> — от западных границ до Дальнего Востока.</p>
           <p style="margin:22px 0 0;font-size:18px;line-height:1.7;color:#3b4658">Год за годом акция охватывает всё больше городов и региональных площадок, а число участников по стране составляет <span style="color:#14345E;font-weight:700">более 1,5&nbsp;млн человек</span>. Правовой диктант давно перерос формат разовой акции и стал ежегодным просветительским событием национального масштаба.</p>
           <a href="#" class="nav-a" style="display:inline-block;margin-top:26px;font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#14345E;border-bottom:2px solid #E14B2E;padding-bottom:3px">Найти площадку в своём регионе</a>
         </div>
         <figure style="margin:0">
           <div style="width:100%;aspect-ratio:16/9;background:#ECE7DC;border:1px solid #d6cfbf">
-            <img src="./assets/map-russia.svg" alt="Карта регионов России" style="width:100%;height:100%;object-fit:contain;display:block">
+            <div class="ph ph-map ph-map--warm">Карта регионов</div>
           </div>
           <figcaption style="margin-top:14px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:500;letter-spacing:.02em;color:#8a8578">Илл. Регионы-участники Всероссийского правового диктанта</figcaption>
         </figure>
@@ -187,10 +189,10 @@
   </section>
 
   <!-- ============ ORGANIZER QUOTE ============ -->
-  <section style="background:#14345E;color:#EDE7DA;padding:84px 64px">
+  <section class="pg-section" style="background:#14345E;color:#EDE7DA;padding:84px 64px">
     <div style="max-width:1000px;margin:0 auto">
       <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a9b6cc;margin-bottom:26px">Слово организатора</div>
-      <blockquote style="margin:0;font-size:38px;line-height:1.4;font-weight:400;color:#F3F0E9">«<span style="font-style:italic">Правовая грамотность — это основа доверия человека к закону и государству. Диктант помогает каждому проверить себя и сделать шаг к более уверенному знанию своих прав.</span>»</blockquote>
+      <blockquote class="pg-quote" style="margin:0;font-size:38px;line-height:1.4;font-weight:400;color:#F3F0E9">«<span style="font-style:italic">Правовая грамотность — это основа доверия человека к закону и государству. Диктант помогает каждому проверить себя и сделать шаг к более уверенному знанию своих прав.</span>»</blockquote>
       <div style="margin-top:32px;display:flex;align-items:center;gap:16px">
         <span style="width:44px;height:2px;background:#E14B2E"></span>
         <div style="font-family:'Manrope',sans-serif;color:#a9b6cc">
@@ -202,25 +204,25 @@
   </section>
 
   <!-- ============ PARTNERS ============ -->
-  <section style="background:#F3F0E9;padding:80px 64px 90px">
+  <section class="pg-section" style="background:#F3F0E9;padding:80px 64px 90px">
     <div style="max-width:1200px;margin:0 auto">
       <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:40px">Партнёры диктанта</div>
 
-      <div style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;padding-bottom:40px;border-bottom:1px solid #d6cfbf">
+      <div class="pg-partners-row" style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;padding-bottom:40px;border-bottom:1px solid #d6cfbf">
         <div style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#14345E;line-height:1.35">Генеральный<br>информационный<br>партнёр</div>
         <div style="display:flex;align-items:center">
           <div class="prt" style="width:150px;height:70px">
-            <img src="./assets/logo-tass.svg" alt="ТАСС" style="width:100%;height:100%;object-fit:contain;display:block">
+            <div class="ph ph-logo">ТАСС</div>
           </div>
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;padding-top:40px">
-        <div style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#14345E;line-height:1.35">Стратегические<br>партнёры</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:center">
+      <div class="pg-partners-row" style="display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:center;padding-top:40px">
+        <div class="pg-partners-label" style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#14345E;line-height:1.35">Стратегические<br>партнёры</div>
+        <div class="pg-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:center">
           <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
             <div class="prt" style="height:64px">
-              <img src="{{ p.src }}" alt="{{ p.name }}" style="width:100%;height:100%;object-fit:contain;display:block">
+              <div class="ph ph-logo">{{ p.name }}</div>
             </div>
           </sc-for>
         </div>
@@ -229,12 +231,12 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section id="faq" style="background:#F3F0E9;padding:20px 64px 96px">
+  <section id="faq" class="pg-section" style="background:#F3F0E9;padding:20px 64px 96px">
     <div style="max-width:1200px;margin:0 auto;padding-top:70px;border-top:1px solid #d6cfbf">
-      <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:start">
-        <div style="position:sticky;top:32px">
+      <div class="pg-faq-layout" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:start">
+        <div class="pg-faq-sticky" style="position:sticky;top:32px">
           <div style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Вопросы и ответы</div>
-          <h2 style="margin:0;font-family:'Manrope',sans-serif;font-size:46px;font-weight:800;color:#14345E;line-height:1.02">Частые<br>вопросы</h2>
+          <h2 class="pg-sec-title" style="margin:0;font-family:'Manrope',sans-serif;font-size:46px;font-weight:800;color:#14345E;line-height:1.02">Частые<br>вопросы</h2>
           <p style="margin:22px 0 0;font-size:17px;line-height:1.65;color:#3b4658">Не нашли ответ? Напишите нам — <a href="mailto:diktant@alrf.ru" style="color:#E14B2E;border-bottom:1px solid #E14B2E">diktant@alrf.ru</a></p>
         </div>
 
@@ -254,20 +256,20 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer style="background:#0E2545;color:#EDE7DA;padding:60px 64px 40px">
+  <footer class="pg-section" style="background:#0E2545;color:#EDE7DA;padding:60px 64px 40px">
     <div style="max-width:1200px;margin:0 auto">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(237,231,218,.18)">
+      <div class="pg-footer-flex" style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(237,231,218,.18)">
         <div style="max-width:340px">
           <div style="display:flex;align-items:center;gap:14px">
             <div style="width:46px;height:46px;flex:none">
-              <img src="./assets/aur-herb.svg" alt="АЮР" style="width:100%;height:100%;object-fit:contain;display:block">
+              <div class="ph ph-icon" aria-hidden="true"></div>
             </div>
             <div style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.25">Ассоциация<br>юристов России</div>
           </div>
           <p style="margin:20px 0 0;font-size:15px;line-height:1.6;color:#9fadc4">Организатор Всероссийского правового (юридического) диктанта.</p>
         </div>
 
-        <div style="display:flex;gap:64px;flex-wrap:wrap;font-family:'Manrope',sans-serif">
+        <div class="pg-footer-links" style="display:flex;gap:64px;flex-wrap:wrap;font-family:'Manrope',sans-serif">
           <div>
             <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7f8ba6;margin-bottom:16px">Диктант</div>
             <div style="display:flex;flex-direction:column;gap:11px;font-size:15px;font-weight:600">
@@ -303,10 +305,10 @@
   renderVals() {
     return {
       partners: [
-        { id: 'v3-p-mgua', name: 'МГЮА', src: './assets/logo-mgua.svg' },
-        { id: 'v3-p-mid', name: 'МИД России', src: './assets/logo-mid.svg' },
-        { id: 'v3-p-rzd', name: 'РЖД', src: './assets/logo-rzd.svg' },
-        { id: 'v3-p-op', name: 'Общественная палата РФ', src: './assets/logo-op.svg' },
+        { id: 'v3-p-mgua', name: 'МГЮА' },
+        { id: 'v3-p-mid', name: 'МИД России' },
+        { id: 'v3-p-rzd', name: 'РЖД' },
+        { id: 'v3-p-op', name: 'Общественная палата РФ' },
       ],
       faq: [
         { q: 'Кто может участвовать?', a: 'Участие открыто для всех желающих без ограничений по возрасту, образованию и профессии — от школьников до практикующих юристов.' },

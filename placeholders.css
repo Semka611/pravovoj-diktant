@@ -1,0 +1,60 @@
+.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  user-select: none;
+}
+
+.ph-icon {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #f6f8fb, #e9eef4);
+  border: 1px solid #dfe5ec;
+}
+
+.ph-icon--light {
+  background: linear-gradient(145deg, #fff, #f3f6fa);
+  border-color: rgba(255, 255, 255, .35);
+}
+
+.ph-logo {
+  width: 100%;
+  height: 100%;
+  padding: 10px 14px;
+  font-family: 'Golos Text', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .02em;
+  color: #8a94a6;
+  border: 1px dashed #d5dbe3;
+  background: #fafbfc;
+}
+
+.ph-map {
+  width: 100%;
+  height: 100%;
+  font-family: 'Golos Text', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(159, 176, 204, .85);
+  border: 1px dashed rgba(255, 255, 255, .16);
+  background:
+    linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.ph-map--warm {
+  color: #8a8578;
+  border-color: #d6cfbf;
+  background:
+    linear-gradient(rgba(20, 52, 94, .03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 52, 94, .03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: #ece7dc;
+}
