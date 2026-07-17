@@ -24,8 +24,8 @@
     padding-bottom: 11px !important;
   }
   .site-shell:not(.strict-shell) .site-header-logo {
-    width: 54px !important;
-    height: 54px !important;
+    width: 68px !important;
+    height: 68px !important;
   }
   .site-shell:not(.strict-shell) .site-header-brand {
     font-size: 13px !important;
@@ -169,7 +169,7 @@
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.in,.reveal.shown,.reveal.in>*,.reveal.shown>*{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
   .site-header{transition:padding .3s ease,box-shadow .3s ease;padding:20px 56px}
   .site-header.shrink{padding-top:12px!important;padding-bottom:12px!important;box-shadow:0 12px 30px -20px rgba(14,37,66,.45)}
-  .site-header-logo{width:58px;height:58px;padding:5px}
+  .site-header-logo{width:72px;height:72px;padding:0;border:none}
   .site-header-brand{font-size:14px;line-height:1.15}
   .site-nav{font-size:16px;gap:36px}
   .site-cta-header{font-size:16px;padding:15px 30px}
@@ -198,8 +198,8 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #D6DFEA">
     <a href="#" style="display:flex;align-items:center;gap:16px">
-      <div class="site-header-logo" style="flex:none;position:relative;border:1px solid #D6DFEA;border-radius:3px">
-        <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
+      <div class="site-header-logo" style="flex:none;position:relative">
+        <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt="Ассоциация юристов России"></div>
       </div>
       <div class="site-header-brand" style="font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#163C62">Ассоциация<br>юристов России</div>
     </a>
@@ -248,7 +248,7 @@
       <!-- countdown as graphic element -->
       <sc-if value="{{ showTimer }}" hint-placeholder-val="{{ true }}">
         <div class="rv d5" style="margin:44px 0 0">
-          <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#A8BBD4;margin-bottom:2px">До старта диктанта</div>
+          <div class="site-hero-timer-label" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#A8BBD4;margin-bottom:2px">До старта диктанта</div>
           <div class="site-countdown" style="display:flex;align-items:flex-end;gap:6px;font-family:'Oswald',sans-serif;color:#fff;font-weight:700;line-height:.82">
             <div style="text-align:center">
               <div class="site-cd-num" style="font-size:132px;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{ d }}</div>
@@ -285,7 +285,7 @@
     <!-- section header -->
     <div class="site-sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:14px">
       <div>
-        <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:14px">Уровни диктанта</div>
+        <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:14px">Уровни диктанта</div>
         <h2 class="site-sec-title" style="margin:0;font-family:'Oswald',sans-serif;font-size:76px;line-height:1.02;font-weight:700;text-transform:uppercase;color:#163C62">Три уровня<br>диктанта</h2>
       </div>
       <p class="site-sec-desc" style="margin:0 0 8px;max-width:340px;font-size:16px;line-height:1.55;font-weight:500;color:#4E637E;text-align:right">Выберите блок по уровню подготовки. Каждый доступен онлайн в течение всего периода проведения.</p>
@@ -327,7 +327,7 @@
   <!-- ============ HOW IT WORKS ============ -->
   <section id="about" class="reveal site-section" style="position:relative;background:#163C62;color:#fff;padding:86px 56px 96px">
     <div style="max-width:520px">
-      <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:14px">Как это работает</div>
+      <div class="site-kicker-on-dark site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:14px">Как это работает</div>
       <h2 class="site-about-title" style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.9;font-weight:700;text-transform:uppercase">Три шага<br>до результата</h2>
       <p style="margin:22px 0 0;max-width:480px;font-size:16px;line-height:1.6;font-weight:500;color:#C5D4E4">Диктант проходит онлайн — пройти можно из любой точки с 3 по 12 декабря.</p>
     </div>
@@ -380,7 +380,7 @@
 
   <!-- ============ PARTNERS ============ -->
   <section class="reveal site-section" style="position:relative;background:#fff;padding:20px 56px 80px">
-    <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:34px;text-align:center">Организаторы и партнёры</div>
+    <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:34px;text-align:center">Организаторы и партнёры</div>
     <div class="site-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch">
       <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
         <div class="partner-cell" style-hover="border-color:#B8332E;transform:translateY(-6px)">
@@ -394,7 +394,7 @@
   <section id="faq" class="reveal site-section" style="position:relative;background:#F3F6FA;padding:82px 56px 96px">
     <div class="site-faq-layout" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start">
       <div class="site-faq-sticky" style="position:sticky;top:96px">
-        <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:14px">Вопросы</div>
+        <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:14px">Вопросы</div>
         <h2 class="site-faq-title" style="margin:0;font-family:'Oswald',sans-serif;font-size:64px;line-height:.9;font-weight:700;text-transform:uppercase;color:#163C62">Частые<br>вопросы</h2>
         <p style="margin:22px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#4E637E">Не нашли ответ? Напишите нам — <a href="mailto:diktant@alrf.ru" style="color:#B8332E;border-bottom:1px solid #B8332E">diktant@alrf.ru</a></p>
       </div>
@@ -423,7 +423,7 @@
 
   <!-- ============ CTA ============ -->
   <section class="reveal site-section" style="position:relative;background:#163C62;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
-    <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:20px">3–12 декабря 2026</div>
+    <div class="site-kicker-on-dark site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#B8332E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.9;font-weight:700;text-transform:uppercase">Проверьте свою<br>правовую грамотность</h2>
     <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px">Пройти диктант →</a>
   </section>
@@ -432,10 +432,10 @@
   <footer class="site-footer" style="background:#0E2542;color:#fff;padding:56px 56px 40px">
     <div class="site-footer-top" style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)">
       <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;flex:none;background:#fff;border-radius:3px;padding:5px">
-          <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
+        <div class="site-footer-logo">
+          <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt="Ассоциация юристов России"></div>
         </div>
-        <div style="font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.2">Ассоциация<br>юристов России</div>
+        <div class="site-footer-brand" style="font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.2">Ассоциация<br>юристов России</div>
       </div>
       <div class="site-footer-links" style="display:flex;gap:72px;flex-wrap:wrap">
         <div>
