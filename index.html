@@ -74,7 +74,7 @@
     padding: 50px 48px 36px !important;
   }
   .site-shell:not(.strict-shell) .site-faq-sticky {
-    top: 90px !important;
+    top: calc(var(--site-header-offset, 112px) + 6px) !important;
   }
   .site-shell:not(.strict-shell) .site-marquee {
     margin: 0 !important;
@@ -152,10 +152,9 @@
 </style>
 <style>
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  html{scroll-behavior:smooth}
   html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%;width:100%}
   html,body,#dc-root,#dc-root>.sc-host{height:auto!important;min-height:100%}
-  [id]{scroll-margin-top:90px}
   body{font-family:'Golos Text',system-ui,sans-serif;color:var(--blue);background:#fff;-webkit-font-smoothing:antialiased}
   .site-shell{width:100%;margin:0 auto;background:#fff;overflow-x:clip}
   img,svg{max-width:100%;height:auto}
@@ -209,7 +208,7 @@
 <div class="site-shell" style="width:100%;margin:0 auto;background:#fff;overflow-x:clip">
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #D6DFEA">
+  <header class="site-header" style="display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #D6DFEA">
     <a href="#" style="display:flex;align-items:center;gap:16px">
       <div class="site-header-logo" style="flex:none;position:relative">
         <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt="Ассоциация юристов России"></div>
@@ -510,6 +509,7 @@ class Component extends DCLogic {
       clearTimeout(this._scrollEndTimer);
       this._scrollEndTimer = setTimeout(() => { this._isScrolling = false; }, 140);
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
+      this.syncHeaderOffset();
       document.querySelectorAll('.reveal').forEach(el => this.updateReveal(el));
       this.checkInView();
     };
@@ -632,6 +632,7 @@ class Component extends DCLogic {
     this.tick();
     this._t = setInterval(() => this.tick(), 1000);
     this._header = document.querySelector('.site-header');
+    this.syncHeaderOffset();
     this.initSmoothScroll();
     window.addEventListener('scroll', this._onScroll, { passive: true });
     // stagger so the DOM is fully painted
@@ -642,8 +643,15 @@ class Component extends DCLogic {
       this.initReveal();
       this.initCount();
       this.initTilt();
+      this.syncHeaderOffset();
       window.addEventListener('resize', this._onScroll, { passive: true });
     }, 60);
+  }
+
+  syncHeaderOffset(){
+    if (!this._header) this._header = document.querySelector('.site-header');
+    if (!this._header) return;
+    document.documentElement.style.setProperty('--site-header-offset', this._header.offsetHeight + 'px');
   }
 
   checkInView(){
