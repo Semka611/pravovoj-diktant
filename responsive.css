@@ -58,8 +58,29 @@ body,
   font-size: clamp(72px, 9vw + 16px, 130px) !important;
 }
 
-.site-marquee .marq-track {
+  .site-marquee .marq-track {
   font-size: clamp(20px, 2.5vw + 8px, 34px) !important;
+}
+
+@media (max-width: 960px) {
+  .reveal.in {
+    animation-duration: .92s;
+  }
+
+  .reveal.in > * {
+    animation-duration: .78s;
+  }
+}
+
+@media (max-width: 640px) {
+  .reveal {
+    transform: translate3d(0, 56px, 0) scale(.94);
+    filter: blur(8px);
+  }
+
+  .reveal.in {
+    animation-duration: .82s;
+  }
 }
 
 @media (max-width: 1200px) {

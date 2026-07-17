@@ -494,6 +494,15 @@ class Component extends DCLogic {
     }
     if (this._io) this._io.disconnect();
     if (this._ioc) this._ioc.disconnect();
+    if (this._onResizeReveal) window.removeEventListener('resize', this._onResizeReveal);
+  }
+
+  getRevealLead(){
+    const vh = window.innerHeight || 800;
+    const w = window.innerWidth || 1200;
+    if (w <= 640) return Math.round(vh * 0.32);
+    if (w <= 960) return Math.round(vh * 0.22);
+    return Math.round(vh * 0.1);
   }
 
   initReveal(){
@@ -503,7 +512,7 @@ class Component extends DCLogic {
       es.forEach(e => {
         this.updateReveal(e.target);
       });
-    }, { threshold: 0, rootMargin: '0px' });
+    }, { threshold: 0, rootMargin: '0px 0px 35% 0px' });
     document.querySelectorAll('.reveal').forEach(el => {
       el.addEventListener('animationend', (ev) => {
         if (ev.animationName === 'revealUp' && el.classList.contains('in')) {
@@ -512,13 +521,17 @@ class Component extends DCLogic {
         }
       });
       this._io.observe(el);
+      this.updateReveal(el);
     });
+    this._onResizeReveal = () => document.querySelectorAll('.reveal').forEach(el => this.updateReveal(el));
+    window.addEventListener('resize', this._onResizeReveal, { passive: true });
   }
 
   updateReveal(el){
     const rect = el.getBoundingClientRect();
     const vh = window.innerHeight || 0;
-    const fullyHidden = rect.bottom <= 0 || rect.top >= vh;
+    const lead = this.getRevealLead();
+    const fullyHidden = rect.bottom <= 0 || rect.top >= vh + lead;
 
     if (fullyHidden) {
       el.classList.remove('in', 'shown');
