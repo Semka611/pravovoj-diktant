@@ -1,5 +1,34 @@
 /* Formal / institutional variant overrides */
 
+/* Match expressive header scale */
+.formal-shell .site-header {
+  padding: 18px 48px !important;
+}
+
+.formal-shell .site-header.shrink {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+
+.formal-shell .site-header-logo {
+  width: 68px !important;
+  height: 68px !important;
+}
+
+.formal-shell .site-header-brand {
+  font-size: 13px !important;
+}
+
+.formal-shell .site-nav {
+  font-size: 15px !important;
+  gap: 32px !important;
+}
+
+.formal-shell .site-cta-header {
+  font-size: 15px !important;
+  padding: 13px 26px !important;
+}
+
 .formal-shell .site-hero--split {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);

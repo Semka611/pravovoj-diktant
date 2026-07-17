@@ -227,7 +227,7 @@
   <!-- ============ HERO ============ -->
   <section data-hero ref="{{ heroRef }}" style="position:relative;background:#163C62;color:#fff;overflow:hidden">
     <!-- region dot field (active map element) -->
-    <div ref="{{ dotsRef }}" class="hero-dots-layer" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none">
+    <div ref="{{ dotsRef }}" class="hero-dots-layer" style="position:absolute;inset:-22% -8%;z-index:0;pointer-events:none">
       <div data-dots-field style="position:absolute;inset:0;pointer-events:auto">
         <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="46">
           <span class="hero-dot" data-x="{{ dot.x }}" data-y="{{ dot.y }}" style="position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};cursor:crosshair"></span>
@@ -535,7 +535,7 @@ class Component extends DCLogic {
 
     if (hero) {
       const heroRect = hero.getBoundingClientRect();
-      parallaxY = Math.max(0, -heroRect.top) * 0.12;
+      parallaxY = Math.max(0, -heroRect.top) * 0.42;
     }
 
     container.style.transform = 'translate3d(0,' + parallaxY.toFixed(1) + 'px,0)';

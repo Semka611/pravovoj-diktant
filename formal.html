@@ -37,12 +37,12 @@
   .reveal.in{animation:revealUp .72s cubic-bezier(.19,.72,.23,1) both}
   .reveal.shown{opacity:1;transform:none;animation:none}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.in,.reveal.shown{animation:none!important;opacity:1!important;transform:none!important}}
-  .site-header{transition:padding .3s ease,box-shadow .3s ease;padding:20px 56px}
-  .site-header.shrink{padding-top:12px!important;padding-bottom:12px!important;box-shadow:0 12px 30px -20px rgba(22,60,98,.55)}
-  .site-header-logo{width:72px;height:72px;padding:0;border:none}
-  .site-header-brand{font-size:14px;line-height:1.15}
-  .site-nav{font-size:16px;gap:36px}
-  .site-cta-header{font-size:16px;padding:15px 30px}
+  .site-header{transition:padding .3s ease,box-shadow .3s ease;padding:18px 48px}
+  .site-header.shrink{padding-top:11px!important;padding-bottom:11px!important;box-shadow:0 12px 30px -20px rgba(22,60,98,.55)}
+  .site-header-logo{width:68px;height:68px;padding:0;border:none}
+  .site-header-brand{font-size:13px;line-height:1.15}
+  .site-nav{font-size:15px;gap:32px}
+  .site-cta-header{font-size:15px;padding:13px 26px}
   .magnetic{transition:transform .2s cubic-bezier(.19,.72,.23,1)}
   .lvl{transition:box-shadow .3s ease,border-color .3s ease}
   details.faq summary{list-style:none;cursor:pointer}
@@ -88,7 +88,7 @@
   <!-- ============ HERO ============ -->
   <section data-hero ref="{{ heroRef }}" style="position:relative;background:#163C62;color:#fff;overflow:hidden">
     <!-- region dot field (active map element) -->
-    <div ref="{{ dotsRef }}" class="hero-dots-layer" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none">
+    <div ref="{{ dotsRef }}" class="hero-dots-layer" style="position:absolute;inset:-22% -8%;z-index:0;pointer-events:none">
       <div data-dots-field style="position:absolute;inset:0;pointer-events:auto">
         <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="46">
           <span class="hero-dot" data-x="{{ dot.x }}" data-y="{{ dot.y }}" style="position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};cursor:crosshair"></span>
@@ -396,7 +396,7 @@ class Component extends DCLogic {
 
     if (hero) {
       const heroRect = hero.getBoundingClientRect();
-      parallaxY = Math.max(0, -heroRect.top) * 0.12;
+      parallaxY = Math.max(0, -heroRect.top) * 0.42;
     }
 
     container.style.transform = 'translate3d(0,' + parallaxY.toFixed(1) + 'px,0)';
