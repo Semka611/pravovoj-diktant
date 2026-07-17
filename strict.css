@@ -68,8 +68,8 @@
 }
 
 .strict-shell .site-levels-cards .lvl:nth-child(2) {
-  background: #C85A45 !important;
-  border-color: #C85A45 !important;
+  background: #C0403A !important;
+  border-color: #C0403A !important;
 }
 
 .strict-shell .site-levels-cards .lvl:nth-child(3) {
@@ -94,7 +94,7 @@
   z-index: 3;
   margin: 48px 0;
   padding: 28px 56px;
-  background: #C85A45;
+  background: #C0403A;
   border-top: 1px solid rgba(20, 52, 94, .08);
   border-bottom: 1px solid rgba(20, 52, 94, .08);
 }
