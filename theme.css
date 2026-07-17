@@ -147,8 +147,41 @@
   line-height: 1.65 !important;
 }
 
+.site-hero-line {
+  letter-spacing: .02em !important;
+}
+
+.site-hero-main,
+.site-hero-accent {
+  letter-spacing: -.02em !important;
+}
+
 .site-hero-accent {
   text-shadow: 0 2px 24px rgba(184, 51, 46, .22);
+}
+
+.site-hero-sub {
+  letter-spacing: 0 !important;
+}
+
+.site-sec-title,
+.site-about-title,
+.site-results-title,
+.site-faq-title,
+.site-cta-title,
+.site-levels-cards h3,
+.site-steps-grid h3,
+.site-faq-q {
+  letter-spacing: -.01em !important;
+}
+
+.site-sec-kicker,
+.site-kicker-on-dark {
+  letter-spacing: .06em !important;
+}
+
+.site-marquee .marq-track {
+  letter-spacing: .01em !important;
 }
 
 .site-cta-header,
@@ -174,12 +207,12 @@
 .site-hero-timer-label {
   color: var(--text-on-dark-muted) !important;
   font-size: 14px !important;
-  letter-spacing: .14em !important;
+  letter-spacing: .06em !important;
 }
 
 .site-sec-kicker {
   font-size: 14px !important;
-  letter-spacing: .14em !important;
+  letter-spacing: .06em !important;
 }
 
 [data-hero] .site-countdown div[style*="uppercase"] {
