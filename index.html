@@ -362,6 +362,7 @@ class Component extends DCLogic {
       clearTimeout(this._scrollEndTimer);
       this._scrollEndTimer = setTimeout(() => { this._isScrolling = false; }, 140);
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
+      document.querySelectorAll('.reveal').forEach(el => this.updateReveal(el));
       this.checkInView();
     };
     this._onMouse = (e) => {
@@ -500,23 +501,39 @@ class Component extends DCLogic {
     this._scrollDir = 'down';
     this._io = new IntersectionObserver((es) => {
       es.forEach(e => {
-        const el = e.target;
-        if (e.isIntersecting) {
-          if (this._scrollDir === 'down') {
-            el.classList.remove('shown');
-            el.classList.remove('in');
-            void el.offsetWidth;
-            el.classList.add('in');
-          } else {
-            el.classList.remove('in');
-            el.classList.add('shown');
-          }
-        } else if (this._scrollDir === 'down') {
-          el.classList.remove('in', 'shown');
+        this.updateReveal(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px' });
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.addEventListener('animationend', (ev) => {
+        if (ev.animationName === 'revealUp' && el.classList.contains('in')) {
+          el.classList.remove('in');
+          el.classList.add('shown');
         }
       });
-    }, { threshold: 0.14, rootMargin: '0px 0px -5% 0px' });
-    document.querySelectorAll('.reveal').forEach(el => this._io.observe(el));
+      this._io.observe(el);
+    });
+  }
+
+  updateReveal(el){
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || 0;
+    const fullyHidden = rect.bottom <= 0 || rect.top >= vh;
+
+    if (fullyHidden) {
+      el.classList.remove('in', 'shown');
+      return;
+    }
+
+    if (this._scrollDir === 'down') {
+      if (!el.classList.contains('shown') && !el.classList.contains('in')) {
+        void el.offsetWidth;
+        el.classList.add('in');
+      }
+    } else {
+      el.classList.remove('in');
+      el.classList.add('shown');
+    }
   }
 
   initCount(){
