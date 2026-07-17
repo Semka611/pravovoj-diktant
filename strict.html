@@ -69,8 +69,8 @@
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #D6DFEA">
-    <a href="#" style="display:flex;align-items:center;gap:16px">
-      <div class="site-header-logo" style="flex:none;position:relative">
+    <a href="#" class="site-header-home" style="display:flex;align-items:center;gap:16px">
+      <div class="site-header-logo site-header-logo-slot" style="flex:none;position:relative">
         <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt="Ассоциация юристов России"></div>
       </div>
       <div class="site-header-brand" style="font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#163C62">Ассоциация<br>юристов России</div>
@@ -96,6 +96,12 @@
         </sc-for>
       </div>
     </div>
+
+    <a href="#" class="site-hero-logo-slot" aria-label="Ассоциация юристов России">
+      <div class="site-hero-logo">
+        <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
+      </div>
+    </a>
 
     <div class="site-hero" style="position:relative;z-index:2;padding:66px 56px 76px">
       <!-- kicker -->
@@ -285,6 +291,8 @@
     </div>
   </section>
 
+  <div class="site-bottom-band">
+
   <!-- ============ MARQUEE BAND ============ -->
   <div class="site-marquee" style="overflow:hidden;background:#B8332E;width:100%;max-width:100%">
     <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:500;letter-spacing:.02em;color:#fff;padding:28px 0">
@@ -294,14 +302,14 @@
   </div>
 
   <!-- ============ CTA ============ -->
-  <section class="reveal site-section" style="position:relative;background:#163C62;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
+  <section class="reveal site-section site-cta-section" style="position:relative;background:transparent;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
     <div class="site-kicker-on-dark site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-weight:700">Проверьте свою правовую грамотность</h2>
     <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;letter-spacing:.03em;padding:18px 42px">Пройти диктант →</a>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer" style="background:#0E2542;color:#fff;padding:56px 56px 40px">
+  <footer class="site-footer" style="background:transparent;color:#fff;padding:56px 56px 40px">
     <div class="site-footer-top" style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)">
       <div style="display:flex;align-items:center;gap:14px">
         <div class="site-footer-logo">
@@ -338,6 +346,8 @@
     </div>
   </footer>
 
+  </div>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{
@@ -365,6 +375,7 @@ class Component extends DCLogic {
       clearTimeout(this._scrollEndTimer);
       this._scrollEndTimer = setTimeout(() => { this._isScrolling = false; }, 140);
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
+      this.updateHeaderLogo();
       document.querySelectorAll('.reveal').forEach(el => this.updateReveal(el));
       this.checkInView();
     };
@@ -496,8 +507,18 @@ class Component extends DCLogic {
       this._stats = Array.from(document.querySelectorAll('.stat-num'));
       this.initReveal();
       this.initCount();
+      this.updateHeaderLogo();
       window.addEventListener('resize', this._onScroll, { passive: true });
     }, 60);
+  }
+
+  updateHeaderLogo(){
+    const shell = document.querySelector('.strict-shell');
+    const hero = this._heroEl || document.querySelector('[data-hero]');
+    if (!shell || !hero) return;
+    const headerH = this._header?.offsetHeight || 96;
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    shell.classList.toggle('logo-in-header', heroBottom <= headerH + 12);
   }
 
   checkInView(){
