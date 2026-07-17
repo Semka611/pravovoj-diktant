@@ -39,6 +39,10 @@
   .faq.open .faq-wrap{grid-template-rows:1fr;opacity:1}
   .faq.open .faq-plus{transform:rotate(45deg)}
   .step:hover .step-num{background:#E14B2E;color:#fff}
+  .btn-orange{background:#E14B2E;color:#fff;transition:background .35s cubic-bezier(.19,.72,.23,1),transform .35s cubic-bezier(.19,.72,.23,1)}
+  .btn-orange:hover{background:#14345E}
+  .btn-orange.btn-orange-deep:hover{background:#c53c22}
+  .hero-dot{transition:transform .45s cubic-bezier(.19,.72,.23,1),background .35s ease}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
 </style>
@@ -62,16 +66,16 @@
       <a href="#faq" style="display:inline-block;color:#14345E;transition:color .25s,transform .25s" style-hover="color:#E14B2E;transform:translateY(-2px)">FAQ</a>
     </nav>
 
-    <a class="site-cta-header" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;background:#E14B2E;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px;transition:background .3s ease" style-hover="background:#14345E">Пройти диктант</a>
+    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px">Пройти диктант</a>
   </header>
 
   <!-- ============ HERO ============ -->
   <section ref="{{ heroRef }}" style="position:relative;background:#14345E;color:#fff;overflow:hidden">
     <!-- region dot field (active map element) -->
-    <div ref="{{ dotsRef }}" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none;will-change:transform">
-      <div style="position:absolute;inset:0;pointer-events:auto">
+    <div ref="{{ dotsRef }}" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none">
+      <div data-dots-field style="position:absolute;inset:0;pointer-events:auto">
         <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="46">
-          <span style="position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};transition:transform .3s ease,background .3s ease;cursor:crosshair" style-hover="background:#E14B2E;transform:scale(2.6)"></span>
+          <span class="hero-dot" data-x="{{ dot.x }}" data-y="{{ dot.y }}" style="position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};cursor:crosshair"></span>
         </sc-for>
       </div>
     </div>
@@ -125,7 +129,7 @@
       </sc-if>
 
       <div class="rv d6 site-hero-actions" style="display:flex;align-items:center;gap:28px;margin-top:44px">
-        <a href="#" style="display:inline-flex;align-items:center;gap:12px;background:#E14B2E;color:#fff;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px;transition:background .3s ease" style-hover="background:#14345E">Присоединиться →</a>
+        <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px">Присоединиться →</a>
         <a href="#levels" style="font-size:16px;font-weight:700;color:#fff;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:3px" style-hover="color:#E14B2E;border-color:#E14B2E">Выбрать уровень</a>
       </div>
     </div>
@@ -276,7 +280,7 @@
   <section class="reveal site-section" style="position:relative;background:#14345E;color:#fff;padding:96px 56px;text-align:center;overflow:hidden">
     <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.9;font-weight:700;text-transform:uppercase">Проверь свою<br>правовую грамотность</h2>
-    <a href="#" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;background:#E14B2E;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px;transition:background .3s ease" style-hover="background:#c53c22">Пройти диктант →</a>
+    <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px">Пройти диктант →</a>
   </section>
 
   <!-- ============ FOOTER ============ -->
@@ -329,34 +333,69 @@ class Component extends DCLogic {
     super(props);
     this.dotsRef = React.createRef();
     this.heroRef = React.createRef();
-    this._scrollY = 0; this._mx = 0; this._my = 0;
+    this._cursorX = null;
+    this._cursorY = null;
     this._onScroll = () => {
-      this._scrollY = window.scrollY || window.pageYOffset || 0;
-      this.applyDots();
-      if (this._header) this._header.classList.toggle('shrink', this._scrollY > 20);
+      if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
       this.checkInView();
     };
     this._onMouse = (e) => {
-      if (!this.heroRef.current) return;
-      const r = this.heroRef.current.getBoundingClientRect();
-      this._mx = (e.clientX - r.left) / r.width - 0.5;
-      this._my = (e.clientY - r.top) / r.height - 0.5;
+      this._cursorX = e.clientX;
+      this._cursorY = e.clientY;
+      this.applyDots();
+    };
+    this._onMouseLeave = () => {
+      this._cursorX = null;
+      this._cursorY = null;
       this.applyDots();
     };
   }
 
   applyDots(){
-    if (!this.dotsRef.current) return;
-    const x = (this._mx * 22).toFixed(1);
-    const y = (this._scrollY * 0.12 + this._my * 18).toFixed(1);
-    this.dotsRef.current.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    const container = this.dotsRef.current;
+    if (!container) return;
+    const field = container.querySelector('[data-dots-field]');
+    if (!field) return;
+    const rect = field.getBoundingClientRect();
+    const cx = this._cursorX;
+    const cy = this._cursorY;
+    const radius = 190;
+    field.querySelectorAll('.hero-dot').forEach((el) => {
+      if (cx == null || cy == null) {
+        el.style.transform = '';
+        el.style.background = 'rgba(255,255,255,.14)';
+        return;
+      }
+      const x = parseFloat(el.dataset.x || '0');
+      const y = parseFloat(el.dataset.y || '0');
+      const dotX = rect.left + (x / 100) * rect.width;
+      const dotY = rect.top + (y / 100) * rect.height;
+      const dx = dotX - cx;
+      const dy = dotY - cy;
+      const dist = Math.hypot(dx, dy);
+      if (dist >= radius) {
+        el.style.transform = '';
+        el.style.background = 'rgba(255,255,255,.14)';
+        return;
+      }
+      const t = 1 - dist / radius;
+      const push = t * 34;
+      const nx = dist ? dx / dist : 0;
+      const ny = dist ? dy / dist : 0;
+      const scale = 1 + t * 1.6;
+      el.style.transform = 'translate(' + (-nx * push).toFixed(1) + 'px,' + (-ny * push).toFixed(1) + 'px) scale(' + scale.toFixed(2) + ')';
+      el.style.background = t > 0.55 ? '#E14B2E' : 'rgba(255,255,255,.14)';
+    });
   }
 
   componentDidMount() {
     this.tick();
     this._t = setInterval(() => this.tick(), 1000);
     window.addEventListener('scroll', this._onScroll, { passive: true });
-    if (this.heroRef.current) this.heroRef.current.addEventListener('mousemove', this._onMouse);
+    if (this.heroRef.current) {
+      this.heroRef.current.addEventListener('mousemove', this._onMouse);
+      this.heroRef.current.addEventListener('mouseleave', this._onMouseLeave);
+    }
     this._header = document.querySelector('.site-header');
     // stagger so the DOM is fully painted
     setTimeout(() => {
@@ -389,7 +428,10 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this._t) clearInterval(this._t);
     window.removeEventListener('scroll', this._onScroll);
-    if (this.heroRef.current) this.heroRef.current.removeEventListener('mousemove', this._onMouse);
+    if (this.heroRef.current) {
+      this.heroRef.current.removeEventListener('mousemove', this._onMouse);
+      this.heroRef.current.removeEventListener('mouseleave', this._onMouseLeave);
+    }
     if (this._io) this._io.disconnect();
     if (this._ioc) this._ioc.disconnect();
   }
@@ -453,9 +495,13 @@ class Component extends DCLogic {
     let seed = 1337;
     const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
     for (let i = 0; i < 82; i++) {
+      const x = 2 + rnd() * 95;
+      const y = 5 + rnd() * 90;
       dots.push({
-        left: (2 + rnd() * 95).toFixed(2) + '%',
-        top: (5 + rnd() * 90).toFixed(2) + '%',
+        left: x.toFixed(2) + '%',
+        top: y.toFixed(2) + '%',
+        x: x.toFixed(2),
+        y: y.toFixed(2),
         size: (4 + rnd() * 8).toFixed(1) + 'px',
       });
     }
