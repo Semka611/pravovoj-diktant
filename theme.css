@@ -132,7 +132,15 @@ html {
   }
 
   .site-nav {
-    font-size: 13px !important;
+    font-size: 14px !important;
+    gap: 8px 10px !important;
+  }
+
+  .site-nav a {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    padding: 10px 12px !important;
   }
 
   .site-cta-header {
