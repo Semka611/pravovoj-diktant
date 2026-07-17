@@ -58,6 +58,10 @@
   .btn-orange.btn-orange-deep:hover{background:var(--accent-deep);color:#fff}
   .hero-dots-layer{will-change:transform}
   .hero-dot{transition:none}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .site-marquee{position:relative;z-index:3;margin:0;padding:0;overflow:hidden}
+  .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
+  @media (prefers-reduced-motion:reduce){.marq-track{animation:none!important}}
 </style>
 </helmet>
 
@@ -281,16 +285,11 @@
     </div>
   </section>
 
-  <!-- ============ INFO BAND ============ -->
-  <div class="site-info-band">
-    <div class="site-info-band-inner">
-      <span>Правовой диктант 2026</span>
-      <span class="sep">•</span>
-      <span>3–12 декабря</span>
-      <span class="sep">•</span>
-      <span>89 субъектов РФ</span>
-      <span class="sep">•</span>
-      <span>33 вопроса · 60 минут</span>
+  <!-- ============ MARQUEE BAND ============ -->
+  <div class="site-marquee" style="overflow:hidden;background:#B8332E;width:100%;max-width:100%">
+    <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:20px;font-weight:500;letter-spacing:.02em;color:#fff;padding:28px 0">
+      <span style="padding:0 28px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span style="padding:0 28px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     </div>
   </div>
 

@@ -90,53 +90,24 @@
   transform: none !important;
 }
 
-.strict-shell .site-info-band {
-  position: relative;
-  z-index: 3;
+.strict-shell .site-marquee {
   margin: 48px 0;
-  padding: 28px 56px;
-  background: #B8332E;
   border-top: 1px solid rgba(255, 255, 255, .12);
   border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
 
-.strict-shell .site-info-band-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px 28px;
-  max-width: 1100px;
-  margin: 0 auto;
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(15px, 1.4vw + 8px, 20px);
-  font-weight: 500;
-  letter-spacing: .02em;
-  color: #fff;
-  text-transform: none;
-}
-
-.strict-shell .site-info-band-inner .sep {
-  opacity: .55;
+.strict-shell .site-marquee .marq-track {
+  font-size: clamp(15px, 1.4vw + 8px, 20px) !important;
+  font-weight: 500 !important;
+  letter-spacing: .02em !important;
+  text-transform: none !important;
+  color: #fff !important;
+  padding: 28px 0 !important;
 }
 
 @media (max-width: 960px) {
   .strict-shell .site-levels-cards {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
-  }
-
-  .strict-shell .site-info-band {
-    padding: 24px 24px;
-  }
-
-  .strict-shell .site-info-band-inner {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-
-  .strict-shell .site-info-band-inner .sep {
-    display: none;
   }
 }
