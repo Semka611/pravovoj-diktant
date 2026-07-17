@@ -31,13 +31,15 @@
   @keyframes revealChild{from{opacity:0;transform:translate3d(0,52px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
   .reveal{opacity:0;transform:translate3d(0,88px,0) scale(.9);filter:blur(12px);will-change:opacity,transform,filter}
   .reveal.in{animation:revealUp 1.08s cubic-bezier(.16,1,.3,1) both}
+  .reveal.shown{opacity:1;transform:none;filter:none;animation:none}
   .reveal.in>*{opacity:0;animation:revealChild .92s cubic-bezier(.16,1,.3,1) both}
+  .reveal.shown>*{opacity:1;transform:none;animation:none}
   .reveal.in>*:nth-child(1){animation-delay:.1s}
   .reveal.in>*:nth-child(2){animation-delay:.22s}
   .reveal.in>*:nth-child(3){animation-delay:.34s}
   .reveal.in>*:nth-child(4){animation-delay:.46s}
   .reveal.in>*:nth-child(n+5){animation-delay:.58s}
-  @media (prefers-reduced-motion:reduce){.reveal,.reveal.in,.reveal.in>*{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
+  @media (prefers-reduced-motion:reduce){.reveal,.reveal.in,.reveal.shown,.reveal.in>*,.reveal.shown>*{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
   .site-header{transition:padding .3s ease,box-shadow .3s ease}
   .site-header.shrink{padding-top:9px!important;padding-bottom:9px!important;box-shadow:0 12px 30px -20px rgba(20,52,94,.55)}
   .magnetic{transition:transform .2s cubic-bezier(.19,.72,.23,1)}
@@ -349,7 +351,13 @@ class Component extends DCLogic {
     this._cursorY = null;
     this._isScrolling = false;
     this._scrollEndTimer = null;
+    this._lastScrollY = 0;
+    this._scrollDir = 'down';
     this._onScroll = () => {
+      const y = window.scrollY || 0;
+      if (y > this._lastScrollY) this._scrollDir = 'down';
+      else if (y < this._lastScrollY) this._scrollDir = 'up';
+      this._lastScrollY = y;
       this._isScrolling = true;
       clearTimeout(this._scrollEndTimer);
       this._scrollEndTimer = setTimeout(() => { this._isScrolling = false; }, 140);
@@ -488,10 +496,24 @@ class Component extends DCLogic {
   }
 
   initReveal(){
+    this._lastScrollY = window.scrollY || 0;
+    this._scrollDir = 'down';
     this._io = new IntersectionObserver((es) => {
       es.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('in');
-        else e.target.classList.remove('in');
+        const el = e.target;
+        if (e.isIntersecting) {
+          if (this._scrollDir === 'down') {
+            el.classList.remove('shown');
+            el.classList.remove('in');
+            void el.offsetWidth;
+            el.classList.add('in');
+          } else {
+            el.classList.remove('in');
+            el.classList.add('shown');
+          }
+        } else if (this._scrollDir === 'down') {
+          el.classList.remove('in', 'shown');
+        }
       });
     }, { threshold: 0.14, rootMargin: '0px 0px -5% 0px' });
     document.querySelectorAll('.reveal').forEach(el => this._io.observe(el));
