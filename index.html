@@ -530,26 +530,19 @@ class Component extends DCLogic {
     const cx = this._cursorX;
     const cy = this._cursorY;
     const cursorActive = !this._isScrolling && cx != null && cy != null;
-    let parallaxX = 0;
     let parallaxY = 0;
 
     if (hero) {
       const heroRect = hero.getBoundingClientRect();
       parallaxY = Math.max(0, -heroRect.top) * 0.12;
-      if (cursorActive) {
-        const mx = (cx - heroRect.left) / heroRect.width - 0.5;
-        const my = (cy - heroRect.top) / heroRect.height - 0.5;
-        parallaxX = mx * 12;
-        parallaxY += my * 10;
-      }
     }
 
-    container.style.transform = 'translate3d(' + parallaxX.toFixed(1) + 'px,' + parallaxY.toFixed(1) + 'px,0)';
+    container.style.transform = 'translate3d(0,' + parallaxY.toFixed(1) + 'px,0)';
 
     const field = container.querySelector('[data-dots-field]');
     if (!field) return;
     const rect = field.getBoundingClientRect();
-    const radius = 140;
+    const radius = 96;
     field.querySelectorAll('.hero-dot').forEach((el) => {
       if (!cursorActive) {
         el.style.transform = '';
@@ -567,10 +560,10 @@ class Component extends DCLogic {
         return;
       }
       const t = 1 - dist / radius;
-      const push = t * 16;
+      const push = t * t * 14;
       const nx = dist ? dx / dist : 0;
       const ny = dist ? dy / dist : 0;
-      const scale = 1 + t * 0.25;
+      const scale = 1 + t * 0.18;
       el.style.transform = 'translate3d(' + (-nx * push).toFixed(1) + 'px,' + (-ny * push).toFixed(1) + 'px,0) scale(' + scale.toFixed(2) + ')';
     });
   }
