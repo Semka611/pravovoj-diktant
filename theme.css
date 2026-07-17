@@ -32,6 +32,24 @@
   background: linear-gradient(168deg, #183F66 0%, #0E2542 100%) !important;
 }
 
+.site-shell:not(.strict-shell) .site-bottom-band .site-cta-section {
+  background: transparent !important;
+}
+
+.site-shell:not(.strict-shell) .site-bottom-band .site-footer {
+  background: transparent !important;
+}
+
+.site-shell:not(.strict-shell) .site-bottom-band {
+  background: linear-gradient(180deg, #163C62 0%, #0E2542 38%, #0E2542 100%);
+  overflow: hidden;
+}
+
+.site-shell:not(.strict-shell) .site-bottom-band .site-marquee {
+  margin: 0 !important;
+  transform: none !important;
+}
+
 .site-header {
   border-bottom-color: var(--border) !important;
 }

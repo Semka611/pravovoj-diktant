@@ -65,9 +65,10 @@
     padding-top: 19px !important;
     padding-bottom: 75px !important;
   }
-  .site-shell:not(.strict-shell) .site-section[style*="padding:112px"] {
+  .site-shell:not(.strict-shell) .site-section[style*="padding:112px"],
+  .site-shell:not(.strict-shell) .site-cta-section {
     padding-top: 105px !important;
-    padding-bottom: 90px !important;
+    padding-bottom: 72px !important;
   }
   .site-shell:not(.strict-shell) .site-footer {
     padding: 50px 48px 36px !important;
@@ -76,7 +77,19 @@
     top: 90px !important;
   }
   .site-shell:not(.strict-shell) .site-marquee {
-    margin: 48px 0 34px !important;
+    margin: 0 !important;
+  }
+  .site-shell:not(.strict-shell) .site-bottom-band {
+    background: linear-gradient(180deg, #163C62 0%, #0E2542 42%, #0E2542 100%);
+    overflow: hidden;
+  }
+  .site-shell:not(.strict-shell) .site-bottom-band .site-cta-section {
+    background: transparent !important;
+    padding-bottom: 72px !important;
+  }
+  .site-shell:not(.strict-shell) .site-bottom-band .site-footer {
+    background: transparent !important;
+    padding-top: 0 !important;
   }
   .site-shell:not(.strict-shell) .site-hero-line {
     font-size: clamp(17px, 2vw + 9px, 36px) !important;
@@ -188,7 +201,7 @@
   .hero-dots-layer{will-change:transform}
   .hero-dot{transition:none}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .site-marquee{position:relative;z-index:3;margin:56px 0 40px;padding:8px 0}
+  .site-marquee{position:relative;z-index:3;margin:0;padding:8px 0}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
 </style>
 </helmet>
@@ -413,8 +426,10 @@
     </div>
   </section>
 
+  <div class="site-bottom-band">
+
   <!-- ============ MARQUEE BAND ============ -->
-  <div class="site-marquee" style="overflow:hidden;background:#B8332E;transform:rotate(-2deg);width:100%;max-width:100%">
+  <div class="site-marquee" style="overflow:hidden;background:#B8332E;width:100%;max-width:100%">
     <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;color:#163C62;padding:20px 0">
       <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
       <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -422,14 +437,14 @@
   </div>
 
   <!-- ============ CTA ============ -->
-  <section class="reveal site-section" style="position:relative;background:#163C62;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
+  <section class="reveal site-section site-cta-section" style="position:relative;background:transparent;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
     <div class="site-kicker-on-dark site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#B8332E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.9;font-weight:700;text-transform:uppercase">Проверьте свою<br>правовую грамотность</h2>
     <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px">Пройти диктант →</a>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer" style="background:#0E2542;color:#fff;padding:56px 56px 40px">
+  <footer class="site-footer" style="background:transparent;color:#fff;padding:56px 56px 40px">
     <div class="site-footer-top" style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)">
       <div style="display:flex;align-items:center;gap:14px">
         <div class="site-footer-logo">
@@ -465,6 +480,8 @@
       </div>
     </div>
   </footer>
+
+  </div>
 
 </div>
 </x-dc>
