@@ -31,8 +31,8 @@
 }
 
 .strict-shell .site-hero-logo {
-  width: clamp(176px, 19vw, 272px);
-  height: clamp(176px, 19vw, 272px);
+  width: calc(clamp(176px, 19vw, 272px) * var(--hero-scale, 1));
+  height: calc(clamp(176px, 19vw, 272px) * var(--hero-scale, 1));
 }
 
 .strict-shell .site-hero-logo .site-brand-mark,
@@ -192,8 +192,8 @@
   }
 
   .strict-shell .site-hero-logo {
-    width: 108px;
-    height: 108px;
+    width: calc(108px * var(--hero-scale, 1));
+    height: calc(108px * var(--hero-scale, 1));
   }
 
   .strict-shell.logo-in-header .site-hero-logo-slot {

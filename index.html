@@ -430,8 +430,8 @@
   <!-- ============ MARQUEE BAND ============ -->
   <div class="site-marquee" style="overflow:hidden;background:#B8332E;width:100%;max-width:100%">
     <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;color:#163C62;padding:20px 0">
-      <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-      <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса · 60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span>Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса&nbsp;&nbsp;•&nbsp;&nbsp;60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span>Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов РФ&nbsp;&nbsp;•&nbsp;&nbsp;33 вопроса&nbsp;&nbsp;•&nbsp;&nbsp;60 минут&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     </div>
   </div>
 
@@ -644,14 +644,64 @@ class Component extends DCLogic {
       this.initCount();
       this.initTilt();
       this.syncHeaderOffset();
+      this._onResizeHero = () => {
+        if (!this._header) this._header = document.querySelector('.site-header');
+        if (this._header) {
+          const was = this._header.classList.contains('shrink');
+          if (was) this._header.classList.remove('shrink');
+          const base = this._header.offsetHeight;
+          if (was) this._header.classList.add('shrink');
+          document.documentElement.style.setProperty('--site-header-base', base + 'px');
+          document.documentElement.style.setProperty('--site-header-offset', this._header.offsetHeight + 'px');
+        }
+        this.fitHeroViewport();
+      };
+      window.addEventListener('resize', this._onResizeHero, { passive: true });
       window.addEventListener('resize', this._onScroll, { passive: true });
+      if (document.fonts?.ready) document.fonts.ready.then(() => this.fitHeroViewport());
     }, 60);
   }
 
   syncHeaderOffset(){
     if (!this._header) this._header = document.querySelector('.site-header');
     if (!this._header) return;
-    document.documentElement.style.setProperty('--site-header-offset', this._header.offsetHeight + 'px');
+    const h = this._header.offsetHeight;
+    document.documentElement.style.setProperty('--site-header-offset', h + 'px');
+    if ((window.scrollY || 0) <= 20) {
+      document.documentElement.style.setProperty('--site-header-base', h + 'px');
+      this.fitHeroViewport();
+    }
+  }
+
+  fitHeroViewport(){
+    const hero = this._heroEl || this.heroRef?.current || document.querySelector('[data-hero]');
+    if (!hero) return;
+    const content = hero.querySelector('.site-hero');
+    if (!content) return;
+
+    content.style.transform = 'none';
+    content.style.width = '100%';
+    content.style.marginTop = '0';
+    content.style.marginBottom = '0';
+    hero.style.setProperty('--hero-scale', '1');
+
+    const availH = hero.clientHeight;
+    const availW = hero.clientWidth;
+    if (availH < 80 || availW < 80) return;
+
+    const needH = content.scrollHeight;
+    const needW = content.scrollWidth;
+    let scale = Math.min(1, (availH - 20) / needH, (availW - 20) / needW);
+    scale = Math.max(0.58, Math.min(1, scale));
+
+    hero.style.setProperty('--hero-scale', String(scale));
+    if (scale < 0.999) {
+      content.style.transformOrigin = 'top left';
+      content.style.transform = `scale(${scale})`;
+      content.style.width = `${100 / scale}%`;
+      content.style.marginBottom = `${needH * (scale - 1)}px`;
+      content.style.marginTop = `${Math.max(0, (availH - needH * scale) / 2)}px`;
+    }
   }
 
   checkInView(){
@@ -680,6 +730,8 @@ class Component extends DCLogic {
     if (this._io) this._io.disconnect();
     if (this._ioc) this._ioc.disconnect();
     if (this._onResizeReveal) window.removeEventListener('resize', this._onResizeReveal);
+    if (this._onResizeHero) window.removeEventListener('resize', this._onResizeHero);
+    window.removeEventListener('resize', this._onScroll);
   }
 
   getRevealLead(){

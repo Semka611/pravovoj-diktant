@@ -22,6 +22,26 @@
 
 [data-hero] {
   background: linear-gradient(168deg, #1A4269 0%, #0E2542 58%, #0B2038 100%) !important;
+  height: calc(100dvh - var(--site-header-base, var(--site-header-offset, 112px)));
+  min-height: 560px;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+[data-hero] .site-hero {
+  width: 100%;
+  box-sizing: border-box;
+  transform-origin: top left;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  [data-hero] {
+    height: auto;
+    min-height: 0;
+  }
 }
 
 #about {
