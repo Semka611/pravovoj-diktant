@@ -56,8 +56,8 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 56px;background:#fff;border-bottom:1px solid #dfe3ea">
     <a href="#" style="display:flex;align-items:center;gap:14px">
-      <div style="width:48px;height:48px;flex:none;position:relative;border:1px solid #dfe3ea;border-radius:3px;padding:5px">
-        <div class="ph ph-icon" aria-hidden="true"></div>
+      <div style="width:48px;height:48px;flex:none;position:relative;border:1px solid #dfe3ea;border-radius:3px;padding:4px">
+        <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
       </div>
       <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#14345E;line-height:1.1">Ассоциация<br>юристов России</div>
     </a>
@@ -239,10 +239,10 @@
   <!-- ============ PARTNERS ============ -->
   <section class="reveal site-section" style="position:relative;background:#fff;padding:20px 56px 80px">
     <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:34px;text-align:center">Организаторы и партнёры</div>
-    <div class="site-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+    <div class="site-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch">
       <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
-        <div style="height:96px;background:#fff;border:1px solid #dfe3ea;display:flex;align-items:center;justify-content:center;padding:14px;transition:border-color .3s ease,transform .3s ease" style-hover="border-color:#E14B2E;transform:translateY(-6px)">
-          <div class="ph ph-logo">{{ p.name }}</div>
+        <div class="partner-cell" style-hover="border-color:#E14B2E;transform:translateY(-6px)">
+          <img class="partner-logo {{ p.logoClass }}" src="{{ p.logo }}" alt="{{ p.alt }}" loading="lazy" decoding="async">
         </div>
       </sc-for>
     </div>
@@ -290,8 +290,8 @@
   <footer class="site-footer" style="background:#0d2340;color:#fff;padding:56px 56px 40px">
     <div class="site-footer-top" style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)">
       <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;flex:none;background:#fff;border-radius:3px;padding:6px">
-          <div class="ph ph-icon ph-icon--light" aria-hidden="true"></div>
+        <div style="width:52px;height:52px;flex:none;background:#fff;border-radius:3px;padding:5px">
+          <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
         </div>
         <div style="font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.2">Ассоциация<br>юристов России</div>
       </div>
@@ -567,10 +567,10 @@ class Component extends DCLogic {
       },
       showTimer: this.props.showTimer ?? true,
       partners: [
-        { id: 'v2-partner-1', name: 'АЮР' },
-        { id: 'v2-partner-2', name: 'Минюст России' },
-        { id: 'v2-partner-3', name: 'МГЮА' },
-        { id: 'v2-partner-4', name: 'ТАСС' },
+        { id: 'partner-aur', name: 'АЮР', logo: './assets/logo-aur.png', alt: 'Ассоциация юристов России', logoClass: 'partner-logo--emblem' },
+        { id: 'partner-minjust', name: 'Минюст России', logo: './assets/logo-minjust.png', alt: 'Министерство юстиции Российской Федерации', logoClass: 'partner-logo--emblem' },
+        { id: 'partner-mgua', name: 'МГЮА', logo: './assets/logo-mgua.png', alt: 'Московский государственный юридический университет имени О.Е. Кутафина', logoClass: '' },
+        { id: 'partner-tass', name: 'ТАСС', logo: './assets/logo-tass.png', alt: 'Информационное агентство ТАСС', logoClass: 'partner-logo--wide' },
       ],
       faq: [
         { q: 'Кто может участвовать?', a: 'Участие открыто для всех желающих без ограничений по возрасту, образованию и профессии — от школьников до практикующих юристов.' },
