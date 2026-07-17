@@ -77,7 +77,17 @@
 }
 
 .partner-cell {
-  border-color: var(--border) !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.partner-cell:hover {
+  transform: translateY(-4px);
+}
+
+.site-levels-cards h3 {
+  letter-spacing: 0 !important;
+  word-spacing: normal !important;
 }
 
 .site-marquee {
@@ -172,7 +182,7 @@
 .site-levels-cards h3,
 .site-steps-grid h3,
 .site-faq-q {
-  letter-spacing: -.01em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-sec-kicker,
@@ -187,10 +197,6 @@
 .site-cta-header,
 .btn-orange {
   letter-spacing: .04em;
-}
-
-.partner-cell {
-  background: var(--white) !important;
 }
 
 .ph-icon {

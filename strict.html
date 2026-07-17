@@ -251,7 +251,7 @@
     <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:34px;text-align:center">Организаторы и партнёры</div>
     <div class="site-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch">
       <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
-        <div class="partner-cell" style-hover="border-color:#B8332E;transform:translateY(-6px)">
+        <div class="partner-cell" style-hover="transform:translateY(-6px)">
           <img class="partner-logo {{ p.logoClass }}" src="{{ p.logo }}" alt="{{ p.alt }}" loading="lazy" decoding="async">
         </div>
       </sc-for>

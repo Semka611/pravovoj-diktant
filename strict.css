@@ -79,6 +79,7 @@
 .strict-shell .site-levels-cards .lvl h3 {
   text-transform: none !important;
   font-size: 28px !important;
+  letter-spacing: 0 !important;
 }
 
 .strict-shell .site-levels-cards .lvl > div[style*="height:70px"] {
