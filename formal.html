@@ -35,8 +35,8 @@
   @keyframes revealUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   .reveal{opacity:0;transform:translateY(24px);will-change:opacity,transform}
   .reveal.in{animation:revealUp .72s cubic-bezier(.19,.72,.23,1) both}
-  .reveal.shown{opacity:1;transform:none;animation:none}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.in,.reveal.shown{animation:none!important;opacity:1!important;transform:none!important}}
+  .reveal.shown{opacity:1;transform:none;filter:none;animation:none}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.reveal.in,.reveal.shown{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
   .site-header{transition:padding .3s ease,box-shadow .3s ease;padding:18px 48px}
   .site-header.shrink{padding-top:11px!important;padding-bottom:11px!important;box-shadow:0 12px 30px -20px rgba(22,60,98,.55)}
   .site-header-logo{width:68px;height:68px;padding:0;border:none}
