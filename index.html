@@ -347,7 +347,12 @@ class Component extends DCLogic {
     this.heroRef = React.createRef();
     this._cursorX = null;
     this._cursorY = null;
+    this._isScrolling = false;
+    this._scrollEndTimer = null;
     this._onScroll = () => {
+      this._isScrolling = true;
+      clearTimeout(this._scrollEndTimer);
+      this._scrollEndTimer = setTimeout(() => { this._isScrolling = false; }, 140);
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
       this.checkInView();
     };
@@ -384,13 +389,14 @@ class Component extends DCLogic {
     const hero = this._heroEl || this.heroRef.current || document.querySelector('[data-hero]');
     const cx = this._cursorX;
     const cy = this._cursorY;
+    const cursorActive = !this._isScrolling && cx != null && cy != null;
     let parallaxX = 0;
     let parallaxY = 0;
 
     if (hero) {
       const heroRect = hero.getBoundingClientRect();
       parallaxY = Math.max(0, -heroRect.top) * 0.12;
-      if (cx != null && cy != null) {
+      if (cursorActive) {
         const mx = (cx - heroRect.left) / heroRect.width - 0.5;
         const my = (cy - heroRect.top) / heroRect.height - 0.5;
         parallaxX = mx * 12;
@@ -405,7 +411,7 @@ class Component extends DCLogic {
     const rect = field.getBoundingClientRect();
     const radius = 140;
     field.querySelectorAll('.hero-dot').forEach((el) => {
-      if (cx == null || cy == null) {
+      if (!cursorActive) {
         el.style.transform = '';
         return;
       }
@@ -470,6 +476,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     if (this._t) clearInterval(this._t);
+    clearTimeout(this._scrollEndTimer);
     this.stopDotsLoop();
     window.removeEventListener('scroll', this._onScroll);
     if (this._heroEl) {
