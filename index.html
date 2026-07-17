@@ -148,6 +148,7 @@
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;scroll-padding-top:90px}
   html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%;width:100%}
+  html,body,#dc-root,#dc-root>.sc-host{height:auto!important;min-height:100%}
   [id]{scroll-margin-top:90px}
   body{font-family:'Golos Text',system-ui,sans-serif;color:var(--blue);background:#fff;-webkit-font-smoothing:antialiased}
   .site-shell{width:100%;margin:0 auto;background:#fff;overflow-x:clip}
@@ -199,7 +200,7 @@
 </style>
 </helmet>
 
-<div class="site-shell" style="width:100%;margin:0 auto;background:#fff;overflow:hidden">
+<div class="site-shell" style="width:100%;margin:0 auto;background:#fff;overflow-x:clip">
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #dfe3ea">
@@ -594,36 +595,42 @@ class Component extends DCLogic {
   }
 
   initSmoothScroll(){
-    if (this._smoothClick) return;
-    this._smoothClick = (e) => {
-      const link = e.target.closest('a[href^="#"]');
-      if (!link) return;
-      const raw = link.getAttribute('href');
-      if (!raw) return;
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const header = this._header || document.querySelector('.site-header');
-      const offset = (header?.offsetHeight || 90) + 12;
+    if (this._smoothBound) return;
+    if (!this._smoothClick) {
+      this._smoothClick = (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link || link.getAttribute('target') === '_blank') return;
+        const raw = (link.getAttribute('href') || '').trim();
+        if (!raw) return;
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const header = document.querySelector('.site-header');
+        const offset = (header?.offsetHeight || 90) + 12;
 
-      if (raw === '#') {
+        if (raw === '#') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+          return;
+        }
+
+        const id = decodeURIComponent(raw.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
-        return;
-      }
-
-      const target = document.querySelector(raw);
-      if (!target) return;
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: Math.max(0, top), behavior: reduced ? 'auto' : 'smooth' });
-    };
-    document.addEventListener('click', this._smoothClick);
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: reduced ? 'auto' : 'smooth' });
+      };
+    }
+    document.addEventListener('click', this._smoothClick, true);
+    this._smoothBound = true;
   }
 
   componentDidMount() {
     this.tick();
     this._t = setInterval(() => this.tick(), 1000);
-    window.addEventListener('scroll', this._onScroll, { passive: true });
     this._header = document.querySelector('.site-header');
+    this.initSmoothScroll();
+    window.addEventListener('scroll', this._onScroll, { passive: true });
     // stagger so the DOM is fully painted
     setTimeout(() => {
       this.initDotsInteraction();
@@ -632,7 +639,6 @@ class Component extends DCLogic {
       this.initReveal();
       this.initCount();
       this.initTilt();
-      this.initSmoothScroll();
       window.addEventListener('resize', this._onScroll, { passive: true });
     }, 60);
   }
@@ -652,7 +658,10 @@ class Component extends DCLogic {
     clearTimeout(this._scrollEndTimer);
     this.stopDotsLoop();
     window.removeEventListener('scroll', this._onScroll);
-    if (this._smoothClick) document.removeEventListener('click', this._smoothClick);
+    if (this._smoothBound && this._smoothClick) {
+      document.removeEventListener('click', this._smoothClick, true);
+      this._smoothBound = false;
+    }
     if (this._heroEl) {
       this._heroEl.removeEventListener('mousemove', this._onMouse);
       this._heroEl.removeEventListener('mouseleave', this._onMouseLeave);
