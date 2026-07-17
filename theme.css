@@ -52,20 +52,20 @@
   background: linear-gradient(168deg, #183F66 0%, #0E2542 100%) !important;
 }
 
-.site-shell:not(.strict-shell) .site-bottom-band .site-cta-section {
+.site-shell:not(.formal-shell) .site-bottom-band .site-cta-section {
   background: transparent !important;
 }
 
-.site-shell:not(.strict-shell) .site-bottom-band .site-footer {
+.site-shell:not(.formal-shell) .site-bottom-band .site-footer {
   background: transparent !important;
 }
 
-.site-shell:not(.strict-shell) .site-bottom-band {
+.site-shell:not(.formal-shell) .site-bottom-band {
   background: linear-gradient(180deg, #163C62 0%, #0E2542 38%, #0E2542 100%);
   overflow: hidden;
 }
 
-.site-shell:not(.strict-shell) .site-bottom-band .site-marquee {
+.site-shell:not(.formal-shell) .site-bottom-band .site-marquee {
   margin: 0 !important;
   transform: none !important;
 }
@@ -347,7 +347,7 @@ html {
   font-size: 23px !important;
 }
 
-.site-shell:not(.strict-shell) .site-header-logo {
+.site-shell:not(.formal-shell) .site-header-logo {
   width: 68px !important;
   height: 68px !important;
 }

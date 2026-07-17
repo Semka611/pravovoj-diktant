@@ -1,10 +1,10 @@
-/* Strict / institutional variant overrides */
+/* Formal / institutional variant overrides */
 
-.strict-shell .site-header-logo-slot {
+.formal-shell .site-header-logo-slot {
   transition: opacity .35s ease, visibility .35s ease, width .35s ease, margin .35s ease;
 }
 
-.strict-shell:not(.logo-in-header) .site-header-logo-slot {
+.formal-shell:not(.logo-in-header) .site-header-logo-slot {
   opacity: 0;
   visibility: hidden;
   width: 0 !important;
@@ -14,11 +14,11 @@
   pointer-events: none;
 }
 
-.strict-shell:not(.logo-in-header) .site-header-home {
+.formal-shell:not(.logo-in-header) .site-header-home {
   gap: 0 !important;
 }
 
-.strict-shell .site-hero-logo-slot {
+.formal-shell .site-hero-logo-slot {
   position: absolute;
   right: auto;
   left: clamp(66%, 56vw, 72%);
@@ -30,60 +30,60 @@
   transition: opacity .35s ease, visibility .35s ease, transform .35s ease;
 }
 
-.strict-shell .site-hero-logo {
+.formal-shell .site-hero-logo {
   width: calc(clamp(176px, 19vw, 272px) * var(--hero-scale, 1));
   height: calc(clamp(176px, 19vw, 272px) * var(--hero-scale, 1));
 }
 
-.strict-shell .site-hero-logo .site-brand-mark,
-.strict-shell .site-hero-logo .site-brand-logo {
+.formal-shell .site-hero-logo .site-brand-mark,
+.formal-shell .site-hero-logo .site-brand-logo {
   width: 100%;
   height: 100%;
 }
 
-.strict-shell.logo-in-header .site-hero-logo-slot {
+.formal-shell.logo-in-header .site-hero-logo-slot {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translate(-50%, -50%) scale(.92);
 }
 
-.strict-shell .site-hero-line {
+.formal-shell .site-hero-line {
   font-size: clamp(16px, 1.6vw + 8px, 28px) !important;
   letter-spacing: .02em !important;
 }
 
-.strict-shell .site-hero-main {
+.formal-shell .site-hero-main {
   font-size: clamp(42px, 6.5vw + 10px, 112px) !important;
   letter-spacing: -.02em !important;
 }
 
-.strict-shell .site-hero-accent {
+.formal-shell .site-hero-accent {
   font-size: clamp(42px, 6.5vw + 10px, 112px) !important;
   transform: none !important;
 }
 
-.strict-shell .site-hero-sub {
+.formal-shell .site-hero-sub {
   font-size: clamp(18px, 2vw + 8px, 32px) !important;
   letter-spacing: 0 !important;
 }
 
-.strict-shell .site-sec-title,
-.strict-shell .site-about-title,
-.strict-shell .site-results-title,
-.strict-shell .site-faq-title,
-.strict-shell .site-cta-title {
+.formal-shell .site-sec-title,
+.formal-shell .site-about-title,
+.formal-shell .site-results-title,
+.formal-shell .site-faq-title,
+.formal-shell .site-cta-title {
   font-size: clamp(36px, 4vw + 12px, 56px) !important;
   line-height: 1.08 !important;
   text-transform: none !important;
   letter-spacing: -.01em !important;
 }
 
-.strict-shell .site-cd-num {
+.formal-shell .site-cd-num {
   font-size: clamp(40px, 6vw + 10px, 96px) !important;
 }
 
-.strict-shell .site-lvl-num {
+.formal-shell .site-lvl-num {
   position: static !important;
   font-size: clamp(34px, 4vw, 52px) !important;
   font-weight: 700 !important;
@@ -93,13 +93,13 @@
   margin-bottom: 20px !important;
 }
 
-.strict-shell #about .site-sec-kicker,
-.strict-shell .site-section:has(.site-partners-grid) > .site-sec-kicker {
+.formal-shell #about .site-sec-kicker,
+.formal-shell .site-section:has(.site-partners-grid) > .site-sec-kicker {
   font-size: clamp(17px, 1.2vw + 11px, 22px) !important;
   letter-spacing: .06em !important;
 }
 
-.strict-shell .site-levels-cards {
+.formal-shell .site-levels-cards {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   align-items: stretch !important;
@@ -107,7 +107,7 @@
   padding-top: 40px !important;
 }
 
-.strict-shell .site-levels-cards .lvl {
+.formal-shell .site-levels-cards .lvl {
   transform: none !important;
   flex: none !important;
   width: auto !important;
@@ -117,59 +117,59 @@
   padding: 32px 28px 28px !important;
 }
 
-.strict-shell .site-levels-cards .lvl:nth-child(1) {
+.formal-shell .site-levels-cards .lvl:nth-child(1) {
   background: #163C62 !important;
   border-color: #163C62 !important;
 }
 
-.strict-shell .site-levels-cards .lvl:nth-child(2) {
+.formal-shell .site-levels-cards .lvl:nth-child(2) {
   background: #B8332E !important;
   border-color: #B8332E !important;
 }
 
-.strict-shell .site-levels-cards .lvl:nth-child(3) {
+.formal-shell .site-levels-cards .lvl:nth-child(3) {
   background: #fff !important;
 }
 
-.strict-shell .site-levels-cards .lvl h3 {
+.formal-shell .site-levels-cards .lvl h3 {
   text-transform: none !important;
   font-size: 28px !important;
   letter-spacing: 0 !important;
 }
 
-.strict-shell .site-levels-cards .lvl > div[style*="height:70px"] {
+.formal-shell .site-levels-cards .lvl > div[style*="height:70px"] {
   display: none !important;
 }
 
-.strict-shell .step-num {
+.formal-shell .step-num {
   transform: none !important;
 }
 
-.strict-shell .site-bottom-band {
+.formal-shell .site-bottom-band {
   background: linear-gradient(180deg, #163C62 0%, #0E2542 38%, #0E2542 100%);
   overflow: hidden;
 }
 
-.strict-shell .site-bottom-band .site-marquee {
+.formal-shell .site-bottom-band .site-marquee {
   margin: 0 !important;
   border: none;
 }
 
-.strict-shell .site-bottom-band .site-cta-section {
+.formal-shell .site-bottom-band .site-cta-section {
   background: transparent !important;
   padding-bottom: 72px !important;
 }
 
-.strict-shell .site-bottom-band .site-footer {
+.formal-shell .site-bottom-band .site-footer {
   background: transparent !important;
   padding-top: 0 !important;
 }
 
-.strict-shell .site-marquee {
+.formal-shell .site-marquee {
   margin: 0;
 }
 
-.strict-shell .site-marquee .marq-track {
+.formal-shell .site-marquee .marq-track {
   font-size: clamp(15px, 1.4vw + 8px, 20px) !important;
   font-weight: 500 !important;
   letter-spacing: .02em !important;
@@ -179,41 +179,41 @@
 }
 
 @media (max-width: 960px) {
-  .strict-shell .site-levels-cards {
+  .formal-shell .site-levels-cards {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
 
-  .strict-shell .site-hero-logo-slot {
+  .formal-shell .site-hero-logo-slot {
     left: auto;
     right: 32px;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  .strict-shell .site-hero-logo {
+  .formal-shell .site-hero-logo {
     width: calc(108px * var(--hero-scale, 1));
     height: calc(108px * var(--hero-scale, 1));
   }
 
-  .strict-shell.logo-in-header .site-hero-logo-slot {
+  .formal-shell.logo-in-header .site-hero-logo-slot {
     transform: translateY(-50%) scale(.92);
   }
 }
 
 @media (max-width: 640px) {
-  .strict-shell .site-hero-logo-slot {
+  .formal-shell .site-hero-logo-slot {
     display: none;
   }
 
-  .strict-shell .site-header-logo-slot {
+  .formal-shell .site-header-logo-slot {
     opacity: 1 !important;
     visibility: visible !important;
     width: 72px !important;
     pointer-events: auto !important;
   }
 
-  .strict-shell .site-header-home {
+  .formal-shell .site-header-home {
     gap: 16px !important;
   }
 }
