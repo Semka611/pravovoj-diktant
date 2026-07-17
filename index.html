@@ -41,9 +41,10 @@
   .faq.open .faq-plus{transform:rotate(45deg)}
   .step:hover .step-num{background:#E14B2E;color:#fff}
   .btn-orange{background:#E14B2E;color:#fff;transition:background .35s cubic-bezier(.19,.72,.23,1),transform .35s cubic-bezier(.19,.72,.23,1)}
-  .btn-orange:hover{background:#14345E;color:#fff}
-  .btn-orange.btn-orange-deep:hover{background:#c53c22;color:#fff}
-  .hero-dot{transition:transform .45s cubic-bezier(.19,.72,.23,1),background .35s ease}
+  .btn-orange:hover{background:#c53c22;color:#fff}
+  .btn-orange.btn-orange-deep:hover{background:#a8331c;color:#fff}
+  .hero-dots-layer{will-change:transform}
+  .hero-dot{transition:background .35s ease}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .site-marquee{position:relative;z-index:3;margin:56px 0 40px;padding:8px 0}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
@@ -74,7 +75,7 @@
   <!-- ============ HERO ============ -->
   <section data-hero ref="{{ heroRef }}" style="position:relative;background:#14345E;color:#fff;overflow:hidden">
     <!-- region dot field (active map element) -->
-    <div ref="{{ dotsRef }}" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none;will-change:transform">
+    <div ref="{{ dotsRef }}" class="hero-dots-layer" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none">
       <div data-dots-field style="position:absolute;inset:0;pointer-events:auto">
         <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="46">
           <span class="hero-dot" data-x="{{ dot.x }}" data-y="{{ dot.y }}" style="position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};cursor:crosshair"></span>
@@ -338,20 +339,33 @@ class Component extends DCLogic {
     this._cursorX = null;
     this._cursorY = null;
     this._onScroll = () => {
-      this.applyDots();
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
       this.checkInView();
     };
     this._onMouse = (e) => {
       this._cursorX = e.clientX;
       this._cursorY = e.clientY;
-      this.applyDots();
     };
     this._onMouseLeave = () => {
       this._cursorX = null;
       this._cursorY = null;
-      this.applyDots();
     };
+  }
+
+  startDotsLoop(){
+    if (this._dotsLoop) return;
+    const loop = () => {
+      this.applyDots();
+      this._dotsLoop = requestAnimationFrame(loop);
+    };
+    this._dotsLoop = requestAnimationFrame(loop);
+  }
+
+  stopDotsLoop(){
+    if (this._dotsLoop) {
+      cancelAnimationFrame(this._dotsLoop);
+      this._dotsLoop = null;
+    }
   }
 
   applyDots(){
@@ -429,6 +443,7 @@ class Component extends DCLogic {
     // stagger so the DOM is fully painted
     setTimeout(() => {
       this.initDotsInteraction();
+      this.startDotsLoop();
       this._reveals = Array.from(document.querySelectorAll('.reveal'));
       this._stats = Array.from(document.querySelectorAll('.stat-num'));
       this.initReveal();
@@ -457,6 +472,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     if (this._t) clearInterval(this._t);
+    this.stopDotsLoop();
     window.removeEventListener('scroll', this._onScroll);
     if (this._heroEl) {
       this._heroEl.removeEventListener('mousemove', this._onMouse);
@@ -518,7 +534,6 @@ class Component extends DCLogic {
     const sc  = Math.floor(diff / 1000);
     const p = (n) => String(n).padStart(2, '0');
     this.setState({ d: String(day), h: p(hr), m: p(mn), s: p(sc) });
-    this.applyDots();
   }
 
   makeDots() {
