@@ -21,6 +21,7 @@
   img,svg{max-width:100%;height:auto}
   a{color:#14345E;text-decoration:none}
   a:hover{color:#E14B2E}
+  a.btn-orange,a.btn-orange:hover{color:#fff!important}
   ::selection{background:#E14B2E;color:#fff}
   @keyframes riseIn{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
   .rv{opacity:0;animation:riseIn .72s cubic-bezier(.19,.72,.23,1) both}
@@ -40,7 +41,8 @@
   .faq.open .faq-plus{transform:rotate(45deg)}
   .step:hover .step-num{background:#E14B2E;color:#fff}
   .btn-orange{background:#E14B2E;color:#fff;transition:background .35s cubic-bezier(.19,.72,.23,1),transform .35s cubic-bezier(.19,.72,.23,1)}
-  .btn-orange.btn-orange-deep{background:#E14B2E}
+  .btn-orange:hover{background:#14345E;color:#fff}
+  .btn-orange.btn-orange-deep:hover{background:#c53c22;color:#fff}
   .hero-dot{transition:transform .45s cubic-bezier(.19,.72,.23,1),background .35s ease}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
@@ -65,7 +67,7 @@
       <a href="#faq" style="display:inline-block;color:#14345E;transition:color .25s,transform .25s" style-hover="color:#E14B2E;transform:translateY(-2px)">FAQ</a>
     </nav>
 
-    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px" style-hover="background:#14345E">Пройти диктант</a>
+    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px">Пройти диктант</a>
   </header>
 
   <!-- ============ HERO ============ -->
@@ -128,7 +130,7 @@
       </sc-if>
 
       <div class="rv d6 site-hero-actions" style="display:flex;align-items:center;gap:28px;margin-top:44px">
-        <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;color:#fff;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px" style-hover="background:#14345E">Присоединиться →</a>
+        <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;color:#fff;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px">Присоединиться →</a>
         <a href="#levels" style="font-size:16px;font-weight:700;color:#fff;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:3px" style-hover="color:#E14B2E;border-color:#E14B2E">Выбрать уровень</a>
       </div>
     </div>
@@ -279,7 +281,7 @@
   <section class="reveal site-section" style="position:relative;background:#14345E;color:#fff;padding:96px 56px;text-align:center;overflow:hidden">
     <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.9;font-weight:700;text-transform:uppercase">Проверь свою<br>правовую грамотность</h2>
-    <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px" style-hover="background:#c53c22">Пройти диктант →</a>
+    <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px">Пройти диктант →</a>
   </section>
 
   <!-- ============ FOOTER ============ -->
@@ -352,25 +354,27 @@ class Component extends DCLogic {
   }
 
   applyDots(){
-    const container = this.dotsRef.current;
+    const container = this.dotsRef.current || document.querySelector('[data-dots-field]')?.parentElement;
     if (!container) return;
 
-    const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    let parallaxX = 0;
-    let parallaxY = scrollY * 0.12;
-    const hero = this._heroEl || this.heroRef.current;
+    const hero = this._heroEl || this.heroRef.current || document.querySelector('[data-hero]');
     const cx = this._cursorX;
     const cy = this._cursorY;
+    let parallaxX = 0;
+    let parallaxY = 0;
 
-    if (hero && cx != null && cy != null) {
-      const r = hero.getBoundingClientRect();
-      const mx = (cx - r.left) / r.width - 0.5;
-      const my = (cy - r.top) / r.height - 0.5;
-      parallaxX = mx * 22;
-      parallaxY += my * 18;
+    if (hero) {
+      const heroRect = hero.getBoundingClientRect();
+      parallaxY = Math.max(0, -heroRect.top) * 0.12;
+      if (cx != null && cy != null) {
+        const mx = (cx - heroRect.left) / heroRect.width - 0.5;
+        const my = (cy - heroRect.top) / heroRect.height - 0.5;
+        parallaxX = mx * 22;
+        parallaxY += my * 18;
+      }
     }
 
-    container.style.transform = 'translate(' + parallaxX.toFixed(1) + 'px,' + parallaxY.toFixed(1) + 'px)';
+    container.style.transform = 'translate3d(' + parallaxX.toFixed(1) + 'px,' + parallaxY.toFixed(1) + 'px,0)';
 
     const field = container.querySelector('[data-dots-field]');
     if (!field) return;
@@ -399,7 +403,7 @@ class Component extends DCLogic {
       const nx = dist ? dx / dist : 0;
       const ny = dist ? dy / dist : 0;
       const scale = 1 + t * 1.6;
-      el.style.transform = 'translate(' + (-nx * push).toFixed(1) + 'px,' + (-ny * push).toFixed(1) + 'px) scale(' + scale.toFixed(2) + ')';
+      el.style.transform = 'translate3d(' + (-nx * push).toFixed(1) + 'px,' + (-ny * push).toFixed(1) + 'px,0) scale(' + scale.toFixed(2) + ')';
       el.style.background = t > 0.45 ? '#E14B2E' : 'rgba(255,255,255,.14)';
     });
   }
@@ -409,6 +413,10 @@ class Component extends DCLogic {
     if (!this._heroEl) return;
     this._heroEl.addEventListener('mousemove', this._onMouse);
     this._heroEl.addEventListener('mouseleave', this._onMouseLeave);
+    this.applyDots();
+  }
+
+  componentDidUpdate() {
     this.applyDots();
   }
 
@@ -509,6 +517,7 @@ class Component extends DCLogic {
     const sc  = Math.floor(diff / 1000);
     const p = (n) => String(n).padStart(2, '0');
     this.setState({ d: String(day), h: p(hr), m: p(mn), s: p(sc) });
+    this.applyDots();
   }
 
   makeDots() {
