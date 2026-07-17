@@ -40,8 +40,7 @@
   .faq.open .faq-plus{transform:rotate(45deg)}
   .step:hover .step-num{background:#E14B2E;color:#fff}
   .btn-orange{background:#E14B2E;color:#fff;transition:background .35s cubic-bezier(.19,.72,.23,1),transform .35s cubic-bezier(.19,.72,.23,1)}
-  .btn-orange:hover{background:#14345E}
-  .btn-orange.btn-orange-deep:hover{background:#c53c22}
+  .btn-orange.btn-orange-deep{background:#E14B2E}
   .hero-dot{transition:transform .45s cubic-bezier(.19,.72,.23,1),background .35s ease}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
@@ -66,13 +65,13 @@
       <a href="#faq" style="display:inline-block;color:#14345E;transition:color .25s,transform .25s" style-hover="color:#E14B2E;transform:translateY(-2px)">FAQ</a>
     </nav>
 
-    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px">Пройти диктант</a>
+    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px" style-hover="background:#14345E">Пройти диктант</a>
   </header>
 
   <!-- ============ HERO ============ -->
-  <section ref="{{ heroRef }}" style="position:relative;background:#14345E;color:#fff;overflow:hidden">
+  <section data-hero ref="{{ heroRef }}" style="position:relative;background:#14345E;color:#fff;overflow:hidden">
     <!-- region dot field (active map element) -->
-    <div ref="{{ dotsRef }}" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none">
+    <div ref="{{ dotsRef }}" style="position:absolute;inset:-8% -4%;z-index:0;pointer-events:none;will-change:transform">
       <div data-dots-field style="position:absolute;inset:0;pointer-events:auto">
         <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="46">
           <span class="hero-dot" data-x="{{ dot.x }}" data-y="{{ dot.y }}" style="position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:{{ dot.size }};height:{{ dot.size }};left:{{ dot.left }};top:{{ dot.top }};cursor:crosshair"></span>
@@ -129,7 +128,7 @@
       </sc-if>
 
       <div class="rv d6 site-hero-actions" style="display:flex;align-items:center;gap:28px;margin-top:44px">
-        <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px">Присоединиться →</a>
+        <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;color:#fff;font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:19px 40px" style-hover="background:#14345E">Присоединиться →</a>
         <a href="#levels" style="font-size:16px;font-weight:700;color:#fff;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:3px" style-hover="color:#E14B2E;border-color:#E14B2E">Выбрать уровень</a>
       </div>
     </div>
@@ -280,7 +279,7 @@
   <section class="reveal site-section" style="position:relative;background:#14345E;color:#fff;padding:96px 56px;text-align:center;overflow:hidden">
     <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.9;font-weight:700;text-transform:uppercase">Проверь свою<br>правовую грамотность</h2>
-    <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px">Пройти диктант →</a>
+    <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px" style-hover="background:#c53c22">Пройти диктант →</a>
   </section>
 
   <!-- ============ FOOTER ============ -->
@@ -336,6 +335,7 @@ class Component extends DCLogic {
     this._cursorX = null;
     this._cursorY = null;
     this._onScroll = () => {
+      this.applyDots();
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
       this.checkInView();
     };
@@ -354,12 +354,28 @@ class Component extends DCLogic {
   applyDots(){
     const container = this.dotsRef.current;
     if (!container) return;
+
+    const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    let parallaxX = 0;
+    let parallaxY = scrollY * 0.12;
+    const hero = this._heroEl || this.heroRef.current;
+    const cx = this._cursorX;
+    const cy = this._cursorY;
+
+    if (hero && cx != null && cy != null) {
+      const r = hero.getBoundingClientRect();
+      const mx = (cx - r.left) / r.width - 0.5;
+      const my = (cy - r.top) / r.height - 0.5;
+      parallaxX = mx * 22;
+      parallaxY += my * 18;
+    }
+
+    container.style.transform = 'translate(' + parallaxX.toFixed(1) + 'px,' + parallaxY.toFixed(1) + 'px)';
+
     const field = container.querySelector('[data-dots-field]');
     if (!field) return;
     const rect = field.getBoundingClientRect();
-    const cx = this._cursorX;
-    const cy = this._cursorY;
-    const radius = 190;
+    const radius = 220;
     field.querySelectorAll('.hero-dot').forEach((el) => {
       if (cx == null || cy == null) {
         el.style.transform = '';
@@ -379,26 +395,31 @@ class Component extends DCLogic {
         return;
       }
       const t = 1 - dist / radius;
-      const push = t * 34;
+      const push = t * 48;
       const nx = dist ? dx / dist : 0;
       const ny = dist ? dy / dist : 0;
       const scale = 1 + t * 1.6;
       el.style.transform = 'translate(' + (-nx * push).toFixed(1) + 'px,' + (-ny * push).toFixed(1) + 'px) scale(' + scale.toFixed(2) + ')';
-      el.style.background = t > 0.55 ? '#E14B2E' : 'rgba(255,255,255,.14)';
+      el.style.background = t > 0.45 ? '#E14B2E' : 'rgba(255,255,255,.14)';
     });
+  }
+
+  initDotsInteraction(){
+    this._heroEl = this.heroRef.current || document.querySelector('[data-hero]');
+    if (!this._heroEl) return;
+    this._heroEl.addEventListener('mousemove', this._onMouse);
+    this._heroEl.addEventListener('mouseleave', this._onMouseLeave);
+    this.applyDots();
   }
 
   componentDidMount() {
     this.tick();
     this._t = setInterval(() => this.tick(), 1000);
     window.addEventListener('scroll', this._onScroll, { passive: true });
-    if (this.heroRef.current) {
-      this.heroRef.current.addEventListener('mousemove', this._onMouse);
-      this.heroRef.current.addEventListener('mouseleave', this._onMouseLeave);
-    }
     this._header = document.querySelector('.site-header');
     // stagger so the DOM is fully painted
     setTimeout(() => {
+      this.initDotsInteraction();
       this._reveals = Array.from(document.querySelectorAll('.reveal'));
       this._stats = Array.from(document.querySelectorAll('.stat-num'));
       this.initReveal();
@@ -428,9 +449,9 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this._t) clearInterval(this._t);
     window.removeEventListener('scroll', this._onScroll);
-    if (this.heroRef.current) {
-      this.heroRef.current.removeEventListener('mousemove', this._onMouse);
-      this.heroRef.current.removeEventListener('mouseleave', this._onMouseLeave);
+    if (this._heroEl) {
+      this._heroEl.removeEventListener('mousemove', this._onMouse);
+      this._heroEl.removeEventListener('mouseleave', this._onMouseLeave);
     }
     if (this._io) this._io.disconnect();
     if (this._ioc) this._ioc.disconnect();
