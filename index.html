@@ -44,7 +44,7 @@
   .btn-orange:hover{background:#c53c22;color:#fff}
   .btn-orange.btn-orange-deep:hover{background:#a8331c;color:#fff}
   .hero-dots-layer{will-change:transform}
-  .hero-dot{transition:background .35s ease}
+  .hero-dot{transition:none}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .site-marquee{position:relative;z-index:3;margin:56px 0 40px;padding:8px 0}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
@@ -384,8 +384,8 @@ class Component extends DCLogic {
       if (cx != null && cy != null) {
         const mx = (cx - heroRect.left) / heroRect.width - 0.5;
         const my = (cy - heroRect.top) / heroRect.height - 0.5;
-        parallaxX = mx * 22;
-        parallaxY += my * 18;
+        parallaxX = mx * 12;
+        parallaxY += my * 10;
       }
     }
 
@@ -394,11 +394,10 @@ class Component extends DCLogic {
     const field = container.querySelector('[data-dots-field]');
     if (!field) return;
     const rect = field.getBoundingClientRect();
-    const radius = 220;
+    const radius = 140;
     field.querySelectorAll('.hero-dot').forEach((el) => {
       if (cx == null || cy == null) {
         el.style.transform = '';
-        el.style.background = 'rgba(255,255,255,.14)';
         return;
       }
       const x = parseFloat(el.dataset.x || '0');
@@ -410,16 +409,14 @@ class Component extends DCLogic {
       const dist = Math.hypot(dx, dy);
       if (dist >= radius) {
         el.style.transform = '';
-        el.style.background = 'rgba(255,255,255,.14)';
         return;
       }
       const t = 1 - dist / radius;
-      const push = t * 48;
+      const push = t * 16;
       const nx = dist ? dx / dist : 0;
       const ny = dist ? dy / dist : 0;
-      const scale = 1 + t * 1.6;
+      const scale = 1 + t * 0.25;
       el.style.transform = 'translate3d(' + (-nx * push).toFixed(1) + 'px,' + (-ny * push).toFixed(1) + 'px,0) scale(' + scale.toFixed(2) + ')';
-      el.style.background = t > 0.45 ? '#E14B2E' : 'rgba(255,255,255,.14)';
     });
   }
 
