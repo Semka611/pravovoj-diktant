@@ -1,0 +1,114 @@
+/* Tricolor theme — navy, white, institutional red */
+
+:root {
+  --blue: #163C62;
+  --blue-dark: #0E2542;
+  --blue-hover: #1E4872;
+  --blue-muted: #A8BBD4;
+  --accent: #B8332E;
+  --accent-hover: #9F2B27;
+  --accent-deep: #872422;
+  --text-muted: #4E637E;
+  --text-soft: #8494A8;
+  --text-footer: #8A9BB2;
+  --text-on-dark: #D0DCE9;
+  --text-on-blue: #C5D4E4;
+  --border: #D6DFEA;
+  --surface-alt: #F3F6FA;
+  --white: #fff;
+}
+
+[data-hero] {
+  background: linear-gradient(168deg, #1A4269 0%, #0E2542 58%, #0B2038 100%) !important;
+}
+
+#about {
+  background: linear-gradient(168deg, #183F66 0%, #102C4A 100%) !important;
+}
+
+.site-section[style*="text-align:center"] {
+  background: linear-gradient(168deg, #183F66 0%, #0E2542 100%) !important;
+}
+
+.site-header {
+  border-bottom-color: var(--border) !important;
+}
+
+.site-header.shrink {
+  box-shadow: 0 10px 28px -18px rgba(14, 37, 66, .42) !important;
+}
+
+.site-header-logo,
+.partner-cell {
+  border-color: var(--border) !important;
+}
+
+.site-marquee {
+  background: var(--accent) !important;
+}
+
+.site-marquee .marq-track {
+  color: var(--white) !important;
+}
+
+.site-info-band {
+  background: var(--accent) !important;
+}
+
+.site-info-band-inner {
+  color: var(--white) !important;
+}
+
+.site-info-band-inner .sep {
+  opacity: .55 !important;
+}
+
+#faq {
+  background: var(--surface-alt) !important;
+}
+
+.site-footer {
+  background: var(--blue-dark) !important;
+}
+
+.btn-orange {
+  box-shadow: 0 4px 16px -6px rgba(184, 51, 46, .42);
+}
+
+.btn-orange:hover {
+  box-shadow: 0 6px 20px -6px rgba(184, 51, 46, .48);
+}
+
+.site-levels-cards .lvl:nth-child(1) {
+  background: var(--blue) !important;
+  border-color: var(--blue) !important;
+}
+
+.site-levels-cards .lvl:nth-child(2) {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+.site-hero-accent {
+  text-shadow: 0 2px 24px rgba(184, 51, 46, .22);
+}
+
+.site-cta-header,
+.btn-orange {
+  letter-spacing: .04em;
+}
+
+.partner-cell {
+  background: var(--white) !important;
+}
+
+.ph-icon {
+  background: linear-gradient(145deg, #F7F9FC, #EEF2F7);
+  border-color: var(--border);
+}
+
+.ph-logo {
+  color: var(--text-soft);
+  border-color: var(--border);
+  background: #FAFBFD;
+}

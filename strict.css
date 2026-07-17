@@ -58,18 +58,18 @@
   width: auto !important;
   min-height: 100% !important;
   box-shadow: none !important;
-  border: 1px solid #dfe3ea !important;
+  border: 1px solid #D6DFEA !important;
   padding: 32px 28px 28px !important;
 }
 
 .strict-shell .site-levels-cards .lvl:nth-child(1) {
-  background: #14345E !important;
-  border-color: #14345E !important;
+  background: #163C62 !important;
+  border-color: #163C62 !important;
 }
 
 .strict-shell .site-levels-cards .lvl:nth-child(2) {
-  background: #C0403A !important;
-  border-color: #C0403A !important;
+  background: #B8332E !important;
+  border-color: #B8332E !important;
 }
 
 .strict-shell .site-levels-cards .lvl:nth-child(3) {
@@ -94,9 +94,9 @@
   z-index: 3;
   margin: 48px 0;
   padding: 28px 56px;
-  background: #C0403A;
-  border-top: 1px solid rgba(20, 52, 94, .08);
-  border-bottom: 1px solid rgba(20, 52, 94, .08);
+  background: #B8332E;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
 
 .strict-shell .site-info-band-inner {
@@ -111,12 +111,12 @@
   font-size: clamp(15px, 1.4vw + 8px, 20px);
   font-weight: 500;
   letter-spacing: .02em;
-  color: #14345E;
+  color: #fff;
   text-transform: none;
 }
 
 .strict-shell .site-info-band-inner .sep {
-  opacity: .45;
+  opacity: .55;
 }
 
 @media (max-width: 960px) {
