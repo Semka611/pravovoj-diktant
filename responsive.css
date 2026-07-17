@@ -189,8 +189,21 @@ body,
 
 @media (max-width: 640px) {
   .site-header {
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .site-header-logo {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .site-header-brand {
+    font-size: 13px !important;
+  }
+
+  .site-nav {
+    font-size: 15px !important;
   }
 
   .site-cta-header {

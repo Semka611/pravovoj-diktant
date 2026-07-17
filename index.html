@@ -48,8 +48,12 @@
   .reveal.in>*:nth-child(4){animation-delay:.46s}
   .reveal.in>*:nth-child(n+5){animation-delay:.58s}
   @media (prefers-reduced-motion:reduce){.reveal,.reveal.in,.reveal.shown,.reveal.in>*,.reveal.shown>*{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
-  .site-header{transition:padding .3s ease,box-shadow .3s ease}
-  .site-header.shrink{padding-top:9px!important;padding-bottom:9px!important;box-shadow:0 12px 30px -20px rgba(15,39,68,.55)}
+  .site-header{transition:padding .3s ease,box-shadow .3s ease;padding:20px 56px}
+  .site-header.shrink{padding-top:12px!important;padding-bottom:12px!important;box-shadow:0 12px 30px -20px rgba(15,39,68,.55)}
+  .site-header-logo{width:58px;height:58px;padding:5px}
+  .site-header-brand{font-size:14px;line-height:1.15}
+  .site-nav{font-size:16px;gap:36px}
+  .site-cta-header{font-size:16px;padding:15px 30px}
   .magnetic{transition:transform .2s cubic-bezier(.19,.72,.23,1)}
   .lvl{transition:transform .34s cubic-bezier(.19,.72,.23,1),box-shadow .34s;transform-style:preserve-3d;will-change:transform}
   details.faq summary{list-style:none;cursor:pointer}
@@ -73,22 +77,22 @@
 <div class="site-shell" style="width:100%;margin:0 auto;background:#fff;overflow:hidden">
 
   <!-- ============ HEADER ============ -->
-  <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 56px;background:#fff;border-bottom:1px solid #dfe3ea">
-    <a href="#" style="display:flex;align-items:center;gap:14px">
-      <div style="width:48px;height:48px;flex:none;position:relative;border:1px solid #dfe3ea;border-radius:3px;padding:4px">
+  <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #dfe3ea">
+    <a href="#" style="display:flex;align-items:center;gap:16px">
+      <div class="site-header-logo" style="flex:none;position:relative;border:1px solid #dfe3ea;border-radius:3px">
         <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
       </div>
-      <div style="font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0F2744;line-height:1.1">Ассоциация<br>юристов России</div>
+      <div class="site-header-brand" style="font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0F2744">Ассоциация<br>юристов России</div>
     </a>
 
-    <nav class="site-nav" style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:700;letter-spacing:.01em">
+    <nav class="site-nav" style="display:flex;align-items:center;font-weight:700;letter-spacing:.01em">
       <a href="#about" style="display:inline-block;color:#0F2744;transition:color .25s,transform .25s" style-hover="color:#8B2E2E;transform:translateY(-2px)">О диктанте</a>
       <a href="#levels" style="display:inline-block;color:#0F2744;transition:color .25s,transform .25s" style-hover="color:#8B2E2E;transform:translateY(-2px)">Уровни</a>
       <a href="#results" style="display:inline-block;color:#0F2744;transition:color .25s,transform .25s" style-hover="color:#8B2E2E;transform:translateY(-2px)">Результаты</a>
       <a href="#faq" style="display:inline-block;color:#0F2744;transition:color .25s,transform .25s" style-hover="color:#8B2E2E;transform:translateY(-2px)">FAQ</a>
     </nav>
 
-    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:13px 26px">Пройти диктант</a>
+    <a class="site-cta-header btn-orange" href="#" style="flex:none;display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Пройти диктант</a>
   </header>
 
   <!-- ============ HERO ============ -->
