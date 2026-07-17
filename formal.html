@@ -396,7 +396,7 @@ class Component extends DCLogic {
 
     if (hero) {
       const heroRect = hero.getBoundingClientRect();
-      parallaxY = Math.max(0, -heroRect.top) * 0.42;
+      parallaxY = Math.max(0, -heroRect.top) * 0.22;
     }
 
     container.style.transform = 'translate3d(0,' + parallaxY.toFixed(1) + 'px,0)';

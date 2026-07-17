@@ -20,6 +20,12 @@
   --white: #fff;
 }
 
+/* No tracking / letter-spacing */
+body,
+body * {
+  letter-spacing: 0 !important;
+}
+
 [data-hero] {
   background: linear-gradient(168deg, #1A4269 0%, #0E2542 58%, #0B2038 100%) !important;
   height: calc(100dvh - var(--site-header-base, var(--site-header-offset, 112px)));
@@ -240,12 +246,12 @@ html {
 }
 
 .site-hero-line {
-  letter-spacing: .02em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-hero-main,
 .site-hero-accent {
-  letter-spacing: -.02em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-hero-accent {
@@ -269,16 +275,16 @@ html {
 
 .site-sec-kicker,
 .site-kicker-on-dark {
-  letter-spacing: .06em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-marquee .marq-track {
-  letter-spacing: .01em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-cta-header,
 .btn-orange {
-  letter-spacing: .04em;
+  letter-spacing: 0;
 }
 
 .ph-icon {
@@ -295,18 +301,18 @@ html {
 .site-hero-timer-label {
   color: var(--text-on-dark-muted) !important;
   font-size: 14px !important;
-  letter-spacing: .06em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-sec-kicker {
   font-size: 14px !important;
-  letter-spacing: .06em !important;
+  letter-spacing: 0 !important;
 }
 
 [data-hero] .site-countdown div[style*="uppercase"] {
   font-size: 13px !important;
   color: var(--text-on-dark-muted) !important;
-  letter-spacing: .12em !important;
+  letter-spacing: 0 !important;
 }
 
 .site-levels-cards .lvl:nth-child(2) .site-lvl-num {
