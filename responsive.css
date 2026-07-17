@@ -3,13 +3,10 @@
 html,
 body,
 #dc-root,
+#dc-root > .sc-host,
 .site-shell {
-  width: 100%;
-  max-width: 100%;
-}
-
-.site-shell {
-  overflow-x: clip;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 /* Fluid typography — scales smoothly between mobile and desktop */
