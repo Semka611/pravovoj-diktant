@@ -45,6 +45,7 @@
   .btn-orange.btn-orange-deep:hover{background:#c53c22;color:#fff}
   .hero-dot{transition:transform .45s cubic-bezier(.19,.72,.23,1),background .35s ease}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .site-marquee{position:relative;z-index:3;margin:56px 0 40px;padding:8px 0}
   .marq-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:marq 26s linear infinite}
 </style>
 </helmet>
@@ -220,8 +221,8 @@
         <div style="margin-top:14px;font-size:15px;font-weight:600;color:#4a5a73">участников в прошлом году</div>
       </div>
       <div style="border-top:3px solid #E14B2E;padding-top:20px;transition:transform .3s ease" style-hover="transform:translateY(-8px)">
-        <div class="site-stat-num" style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#14345E"><span class="stat-num" data-to="85" data-dec="0">0</span></div>
-        <div style="margin-top:14px;font-size:15px;font-weight:600;color:#4a5a73">регионов России</div>
+        <div class="site-stat-num" style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#14345E"><span class="stat-num" data-to="89" data-dec="0">0</span></div>
+        <div style="margin-top:14px;font-size:15px;font-weight:600;color:#4a5a73">субъектов РФ</div>
       </div>
       <div style="border-top:3px solid #E14B2E;padding-top:20px;transition:transform .3s ease" style-hover="transform:translateY(-8px)">
         <div class="site-stat-num" style="font-family:'Oswald',sans-serif;font-size:88px;font-weight:700;line-height:.85;color:#14345E"><span class="stat-num" data-to="40" data-dec="0">0</span>+</div>
@@ -270,15 +271,15 @@
   </section>
 
   <!-- ============ MARQUEE BAND ============ -->
-  <div class="site-marquee" style="overflow:hidden;background:#E14B2E;transform:rotate(-2deg);width:100%;max-width:100%;margin:38px 0 -26px">
-    <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#14345E;padding:16px 0">
-      <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-      <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <div class="site-marquee" style="overflow:hidden;background:#E14B2E;transform:rotate(-2deg);width:100%;max-width:100%">
+    <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#14345E;padding:20px 0">
+      <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;89 субъектов&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     </div>
   </div>
 
   <!-- ============ CTA ============ -->
-  <section class="reveal site-section" style="position:relative;background:#14345E;color:#fff;padding:96px 56px;text-align:center;overflow:hidden">
+  <section class="reveal site-section" style="position:relative;background:#14345E;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
     <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-size:88px;line-height:.9;font-weight:700;text-transform:uppercase">Проверь свою<br>правовую грамотность</h2>
     <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:20px 46px">Пройти диктант →</a>
