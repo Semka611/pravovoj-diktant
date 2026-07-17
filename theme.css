@@ -171,11 +171,6 @@
   background: #FAFBFD;
 }
 
-/* Kickers on dark blue sections */
-.site-kicker-on-dark {
-  color: var(--accent-on-dark) !important;
-}
-
 .site-hero-timer-label {
   color: var(--text-on-dark-muted) !important;
   font-size: 14px !important;
