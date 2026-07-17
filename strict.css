@@ -21,7 +21,7 @@
 .strict-shell .site-hero-logo-slot {
   position: absolute;
   right: auto;
-  left: clamp(60%, 52vw, 66%);
+  left: clamp(66%, 56vw, 72%);
   top: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
@@ -31,8 +31,8 @@
 }
 
 .strict-shell .site-hero-logo {
-  width: clamp(148px, 16vw, 220px);
-  height: clamp(148px, 16vw, 220px);
+  width: clamp(176px, 19vw, 272px);
+  height: clamp(176px, 19vw, 272px);
 }
 
 .strict-shell .site-hero-logo .site-brand-mark,
@@ -192,8 +192,8 @@
   }
 
   .strict-shell .site-hero-logo {
-    width: 96px;
-    height: 96px;
+    width: 108px;
+    height: 108px;
   }
 
   .strict-shell.logo-in-header .site-hero-logo-slot {
