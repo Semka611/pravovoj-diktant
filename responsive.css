@@ -1,4 +1,83 @@
-/* Mobile / tablet overrides for new/ layout */
+/* Fluid layout + breakpoints for merged landing page */
+
+html,
+body,
+#dc-root,
+.site-shell {
+  width: 100%;
+  max-width: 100%;
+}
+
+.site-shell {
+  overflow-x: clip;
+}
+
+/* Fluid typography — scales smoothly between mobile and desktop */
+.site-hero-line {
+  font-size: clamp(18px, 2.2vw + 10px, 38px) !important;
+}
+
+.site-hero-main,
+.site-hero-accent {
+  font-size: clamp(52px, 11vw + 8px, 172px) !important;
+}
+
+.site-hero-sub {
+  font-size: clamp(20px, 3vw + 8px, 46px) !important;
+}
+
+.site-cd-num {
+  font-size: clamp(44px, 8vw + 12px, 132px) !important;
+}
+
+.site-cd-sep {
+  font-size: clamp(32px, 6vw + 8px, 100px) !important;
+  padding-bottom: clamp(10px, 2vw + 4px, 34px) !important;
+}
+
+.site-sec-title,
+.site-about-title,
+.site-results-title {
+  font-size: clamp(40px, 5.5vw + 12px, 76px) !important;
+}
+
+.site-faq-title {
+  font-size: clamp(36px, 4.5vw + 12px, 64px) !important;
+}
+
+.site-cta-title {
+  font-size: clamp(40px, 6vw + 12px, 88px) !important;
+}
+
+.site-stat-num {
+  font-size: clamp(48px, 6vw + 12px, 88px) !important;
+}
+
+.site-stat-num span[style*="font-size:44px"] {
+  font-size: clamp(24px, 3vw + 8px, 44px) !important;
+}
+
+.site-lvl-num {
+  font-size: clamp(72px, 9vw + 16px, 130px) !important;
+}
+
+.site-marquee .marq-track {
+  font-size: clamp(20px, 2.5vw + 8px, 34px) !important;
+}
+
+@media (max-width: 1200px) {
+  .site-header {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  .site-hero,
+  .site-section,
+  .site-footer {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
 
 @media (max-width: 960px) {
   .site-header {
@@ -20,20 +99,25 @@
     margin-left: auto !important;
   }
 
-  .site-section {
+  .site-hero,
+  .site-section,
+  .site-footer {
     padding-left: 24px !important;
     padding-right: 24px !important;
   }
 
-  .site-sec-head {
+  .site-sec-head,
+  .site-results-head {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 16px !important;
   }
 
-  .site-sec-desc {
+  .site-sec-desc,
+  .site-results-desc {
     max-width: none !important;
     text-align: left !important;
+    margin-bottom: 0 !important;
   }
 
   .site-levels-cards {
@@ -44,6 +128,8 @@
 
   .site-levels-cards .lvl {
     transform: none !important;
+    flex: none !important;
+    width: 100% !important;
   }
 
   .site-steps-grid {
@@ -75,6 +161,12 @@
   .site-footer-links {
     gap: 32px !important;
   }
+
+  .site-countdown {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 12px !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -91,24 +183,8 @@
   }
 
   .site-hero {
-    padding: 36px 24px 44px !important;
-  }
-
-  .site-hero-line {
-    font-size: 22px !important;
-  }
-
-  .site-hero-main {
-    font-size: 64px !important;
-  }
-
-  .site-hero-accent {
-    font-size: 64px !important;
-    transform: rotate(-2deg) !important;
-  }
-
-  .site-hero-sub {
-    font-size: 22px !important;
+    padding-top: 36px !important;
+    padding-bottom: 44px !important;
   }
 
   .site-hero .rv.d1 {
@@ -119,17 +195,14 @@
   }
 
   .site-countdown {
-    flex-wrap: wrap !important;
-    gap: 4px 8px !important;
-  }
-
-  .site-cd-num {
-    font-size: 56px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: end !important;
+    gap: 8px 12px !important;
   }
 
   .site-cd-sep {
-    font-size: 40px !important;
-    padding-bottom: 14px !important;
+    display: none !important;
   }
 
   .site-hero-actions {
@@ -147,42 +220,24 @@
     padding-bottom: 60px !important;
   }
 
-  .site-sec-title {
-    font-size: 44px !important;
-  }
-
-  .site-sec-title-sm {
-    font-size: 40px !important;
-  }
-
-  .site-stat-num {
-    font-size: 56px !important;
-  }
-
-  .site-stats-grid {
-    grid-template-columns: 1fr !important;
-  }
-
+  .site-stats-grid,
   .site-partners-grid {
     grid-template-columns: 1fr !important;
   }
 
   .site-faq-q {
     font-size: 18px !important;
+    gap: 16px !important;
   }
 
-  .site-cta-title {
-    font-size: 44px !important;
-  }
-}
-
-@media (max-width: 400px) {
-  .site-hero-main,
-  .site-hero-accent {
-    font-size: 52px !important;
+  .site-footer {
+    padding-top: 40px !important;
+    padding-bottom: 32px !important;
   }
 
-  .site-cd-num {
-    font-size: 44px !important;
+  .site-footer > div:last-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
   }
 }

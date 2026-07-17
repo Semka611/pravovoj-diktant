@@ -15,8 +15,10 @@
 <link rel="stylesheet" href="./responsive.css">
 <style>
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%}
+  html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%;width:100%}
   body{font-family:'Golos Text',system-ui,sans-serif;color:#14345E;background:#fff;-webkit-font-smoothing:antialiased}
+  .site-shell{width:100%;max-width:1440px;margin:0 auto;background:#fff;overflow-x:clip}
+  img,svg{max-width:100%;height:auto}
   a{color:#14345E;text-decoration:none}
   a:hover{color:#E14B2E}
   ::selection{background:#E14B2E;color:#fff}
@@ -42,7 +44,7 @@
 </style>
 </helmet>
 
-<div style="width:100%;max-width:1440px;margin:0 auto;background:#fff;overflow:hidden">
+<div class="site-shell" style="width:100%;max-width:1440px;margin:0 auto;background:#fff;overflow:hidden">
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" style="position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 56px;background:#fff;border-bottom:1px solid #dfe3ea">
@@ -145,7 +147,7 @@
 
       <!-- level 01 -->
       <div class="lvl" data-base="rotate(-1.4deg)" style="flex:1;position:relative;background:#14345E;color:#fff;padding:38px 34px 34px;transform:rotate(-1.4deg);box-shadow:0 26px 50px -30px rgba(20,52,94,.6)">
-        <div style="position:absolute;top:-46px;left:24px;font-family:'Oswald',sans-serif;font-size:130px;font-weight:700;line-height:1;color:#E14B2E">01</div>
+        <div class="site-lvl-num" style="position:absolute;top:-46px;left:24px;font-family:'Oswald',sans-serif;font-size:130px;font-weight:700;line-height:1;color:#E14B2E">01</div>
         <div style="height:70px"></div>
         <h3 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;text-transform:uppercase">Базовый</h3>
         <p style="margin:16px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#c9d3e4">Общие правовые знания для всех, кто хочет проверить грамотность в повседневных ситуациях.</p>
@@ -154,7 +156,7 @@
 
       <!-- level 02 (accent, dominant) -->
       <div class="lvl" data-base="translateY(46px) rotate(1.2deg)" style="flex:1;position:relative;background:#E14B2E;color:#fff;padding:38px 34px 34px;transform:translateY(46px) rotate(1.2deg);box-shadow:0 30px 55px -28px rgba(225,75,46,.6);z-index:3">
-        <div style="position:absolute;top:-46px;left:24px;font-family:'Oswald',sans-serif;font-size:130px;font-weight:700;line-height:1;color:#14345E">02</div>
+        <div class="site-lvl-num" style="position:absolute;top:-46px;left:24px;font-family:'Oswald',sans-serif;font-size:130px;font-weight:700;line-height:1;color:#14345E">02</div>
         <div style="position:absolute;top:20px;right:22px;font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:#fff;color:#E14B2E;padding:5px 10px">Популярный</div>
         <div style="height:70px"></div>
         <h3 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;text-transform:uppercase">Профессиональный</h3>
@@ -164,7 +166,7 @@
 
       <!-- level 03 -->
       <div class="lvl" data-base="translateY(12px) rotate(-1deg)" style="flex:1;position:relative;background:#fff;color:#14345E;padding:38px 34px 34px;transform:translateY(12px) rotate(-1deg);box-shadow:0 26px 50px -32px rgba(20,52,94,.35);border:1px solid #dfe3ea">
-        <div style="position:absolute;top:-46px;left:24px;font-family:'Oswald',sans-serif;font-size:130px;font-weight:700;line-height:1;color:#E14B2E">03</div>
+        <div class="site-lvl-num" style="position:absolute;top:-46px;left:24px;font-family:'Oswald',sans-serif;font-size:130px;font-weight:700;line-height:1;color:#E14B2E">03</div>
         <div style="height:70px"></div>
         <h3 style="margin:0;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;text-transform:uppercase">Бизнес</h3>
         <p style="margin:16px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#4a5a73">Правовые аспекты предпринимательства для руководителей и специалистов компаний.</p>
@@ -178,7 +180,7 @@
   <section id="about" class="reveal site-section" style="position:relative;background:#14345E;color:#fff;padding:86px 56px 96px">
     <div style="max-width:520px">
       <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Как это работает</div>
-      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.9;font-weight:700;text-transform:uppercase">Три шага<br>к участию</h2>
+      <h2 class="site-about-title" style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.9;font-weight:700;text-transform:uppercase">Три шага<br>к участию</h2>
     </div>
 
     <div class="site-steps-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:rgba(255,255,255,.16)">
@@ -202,9 +204,9 @@
 
   <!-- ============ SCALE / STATS ============ -->
   <section id="results" class="reveal site-section" style="position:relative;background:#fff;color:#14345E;padding:82px 56px 92px">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
-      <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.88;font-weight:700;text-transform:uppercase;color:#14345E">Масштаб<br>акции</h2>
-      <p style="margin:0 0 10px;max-width:360px;font-size:16px;line-height:1.55;font-weight:500;color:#4a5a73;text-align:right">С каждым годом Правовой диктант охватывает всё больше участников и регионов страны.</p>
+    <div class="site-results-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+      <h2 class="site-results-title" style="margin:0;font-family:'Oswald',sans-serif;font-size:72px;line-height:.88;font-weight:700;text-transform:uppercase;color:#14345E">Масштаб<br>акции</h2>
+      <p class="site-results-desc" style="margin:0 0 10px;max-width:360px;font-size:16px;line-height:1.55;font-weight:500;color:#4a5a73;text-align:right">С каждым годом Правовой диктант охватывает всё больше участников и регионов страны.</p>
     </div>
 
     <div class="site-stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px">
@@ -244,7 +246,7 @@
     <div class="site-faq-layout" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start">
       <div class="site-faq-sticky" style="position:sticky;top:96px">
         <div style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#E14B2E;margin-bottom:14px">Вопросы</div>
-        <h2 style="margin:0;font-family:'Oswald',sans-serif;font-size:64px;line-height:.9;font-weight:700;text-transform:uppercase;color:#14345E">Частые<br>вопросы</h2>
+        <h2 class="site-faq-title" style="margin:0;font-family:'Oswald',sans-serif;font-size:64px;line-height:.9;font-weight:700;text-transform:uppercase;color:#14345E">Частые<br>вопросы</h2>
         <p style="margin:22px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#4a5a73">Не нашли ответ? Напишите нам — <a href="#" style="color:#E14B2E;border-bottom:1px solid #E14B2E">info@юрдиктант.рф</a></p>
       </div>
 
@@ -263,7 +265,7 @@
   </section>
 
   <!-- ============ MARQUEE BAND ============ -->
-  <div style="overflow:hidden;background:#E14B2E;transform:rotate(-2deg);width:112%;margin:38px -6% -26px">
+  <div class="site-marquee" style="overflow:hidden;background:#E14B2E;transform:rotate(-2deg);width:100%;max-width:100%;margin:38px 0 -26px">
     <div class="marq-track" style="font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#14345E;padding:16px 0">
       <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;</span>
       <span style="padding:0 4px">Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;Правовой диктант 2026&nbsp;&nbsp;•&nbsp;&nbsp;3–12 декабря&nbsp;&nbsp;•&nbsp;&nbsp;Проверь себя&nbsp;&nbsp;•&nbsp;&nbsp;85 регионов&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -278,7 +280,7 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer style="background:#0d2340;color:#fff;padding:56px 56px 40px">
+  <footer class="site-footer" style="background:#0d2340;color:#fff;padding:56px 56px 40px">
     <div class="site-footer-top" style="display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)">
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;flex:none;background:#fff;border-radius:3px;padding:6px">
