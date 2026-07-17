@@ -218,13 +218,6 @@ body,
     padding-bottom: 44px !important;
   }
 
-  .site-hero .rv.d1 {
-    flex-wrap: wrap !important;
-    font-size: 11px !important;
-    letter-spacing: .14em !important;
-    padding: 8px 14px !important;
-  }
-
   .site-countdown {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;

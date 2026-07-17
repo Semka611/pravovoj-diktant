@@ -69,7 +69,7 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header" style="display:flex;align-items:center;justify-content:space-between;gap:36px;background:#fff;border-bottom:1px solid #D6DFEA">
     <a href="#" class="site-header-home" style="display:flex;align-items:center;gap:16px">
-      <div class="site-header-logo site-header-logo-slot" style="flex:none;position:relative">
+      <div class="site-header-logo" style="flex:none;position:relative">
         <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt="Ассоциация юристов России"></div>
       </div>
       <div class="site-header-brand" style="font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#163C62">Ассоциация<br>юристов России</div>
@@ -96,36 +96,25 @@
       </div>
     </div>
 
-    <a href="#" class="site-hero-logo-slot" aria-label="Ассоциация юристов России">
-      <div class="site-hero-logo">
-        <div class="site-brand-mark"><img class="site-brand-logo" src="./assets/logo-aur.png" alt=""></div>
+    <div class="site-hero site-hero--split" style="position:relative;z-index:2;padding:66px 56px 76px">
+      <div class="site-hero-maincol">
+        <h1 style="margin:0;font-family:'Oswald',sans-serif;font-weight:700;color:#fff;line-height:1.02">
+          <span class="rv d1 site-hero-line" style="display:block;font-weight:500;color:#A8BBD4">Всероссийский</span>
+          <span class="rv d2 site-hero-main" style="display:block;margin-top:6px">Правовой</span>
+          <span class="rv d3 site-hero-accent" style="display:inline-block;color:#B8332E;margin-top:2px">диктант</span>
+        </h1>
+
+        <p class="rv d4" style="margin:34px 0 0;max-width:520px;font-size:19px;line-height:1.55;font-weight:400;color:#D0DCE9">Ежегодная просветительская акция Ассоциации юристов России. Проверьте свой уровень правовой грамотности — от базовых знаний до профессиональной юриспруденции.</p>
+
+        <div class="rv d6 site-hero-actions" style="display:flex;align-items:center;gap:28px;margin-top:44px">
+          <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;color:#fff;font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;letter-spacing:.03em;padding:17px 36px">Пройти диктант →</a>
+          <a href="#levels" style="font-size:16px;font-weight:700;color:#fff;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:3px" style-hover="color:#B8332E;border-color:#B8332E">Узнать об уровнях</a>
+        </div>
       </div>
-    </a>
 
-    <div class="site-hero" style="position:relative;z-index:2;padding:66px 56px 76px">
-      <!-- kicker -->
-      <div class="rv d1" style="display:inline-flex;align-items:center;gap:14px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#163C62;background:#fff;padding:9px 18px">
-        <span>Просветительская акция</span>
-        <span style="width:6px;height:6px;background:#B8332E;transform:rotate(45deg)"></span>
-        <span>3–12 декабря 2026</span>
-      </div>
-
-      <!-- dynamic headline -->
-      <h1 style="margin:26px 0 0;font-family:'Oswald',sans-serif;font-weight:700;color:#fff;line-height:1.02">
-        <span class="rv d2 site-hero-line" style="display:block;font-weight:500;color:#A8BBD4">Всероссийский</span>
-        <span class="rv d3 site-hero-main" style="display:block;margin-top:6px">Правовой</span>
-        <span class="rv d4" style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-top:2px">
-          <span class="site-hero-accent" style="display:inline-block;color:#B8332E">диктант</span>
-          <span class="site-hero-sub" style="font-weight:500;color:#A8BBD4">(юридический)</span>
-        </span>
-      </h1>
-
-      <p class="rv d4" style="margin:34px 0 0;max-width:560px;font-size:19px;line-height:1.55;font-weight:400;color:#D0DCE9">Ежегодная просветительская акция Ассоциации юристов России. Проверьте свой уровень правовой грамотности — от базовых знаний до профессиональной юриспруденции.</p>
-
-      <!-- countdown as graphic element -->
       <sc-if value="{{ showTimer }}" hint-placeholder-val="{{ true }}">
-        <div class="rv d5" style="margin:44px 0 0">
-          <div class="site-hero-timer-label" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.06em;color:#A8BBD4;margin-bottom:2px">До старта диктанта</div>
+        <div class="rv d5 site-hero-timer">
+          <div class="site-hero-timer-label" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.06em;color:#A8BBD4;margin-bottom:8px">До старта диктанта</div>
           <div class="site-countdown" style="display:flex;align-items:flex-end;gap:6px;font-family:'Oswald',sans-serif;color:#fff;font-weight:700;line-height:.82">
             <div style="text-align:center">
               <div class="site-cd-num" style="font-size:132px;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{ d }}</div>
@@ -149,11 +138,6 @@
           </div>
         </div>
       </sc-if>
-
-      <div class="rv d6 site-hero-actions" style="display:flex;align-items:center;gap:28px;margin-top:44px">
-        <a href="#" class="btn-orange" style="display:inline-flex;align-items:center;gap:12px;color:#fff;font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;letter-spacing:.03em;padding:17px 36px">Пройти диктант →</a>
-        <a href="#levels" style="font-size:16px;font-weight:700;color:#fff;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:3px" style-hover="color:#B8332E;border-color:#B8332E">Узнать об уровнях</a>
-      </div>
     </div>
   </section>
 
@@ -162,7 +146,6 @@
     <!-- section header -->
     <div class="site-sec-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:14px">
       <div>
-        <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:14px">Уровни диктанта</div>
         <h2 class="site-sec-title" style="margin:0;font-family:'Oswald',sans-serif;font-weight:700;color:#163C62">Три уровня диктанта</h2>
       </div>
       <p class="site-sec-desc" style="margin:0 0 8px;max-width:340px;font-size:16px;line-height:1.55;font-weight:500;color:#4E637E;text-align:right">Выберите блок по уровню подготовки. Каждый доступен онлайн в течение всего периода проведения.</p>
@@ -204,7 +187,6 @@
   <!-- ============ HOW IT WORKS ============ -->
   <section id="about" class="reveal site-section" style="position:relative;background:#163C62;color:#fff;padding:86px 56px 96px">
     <div style="max-width:520px">
-      <div class="site-kicker-on-dark site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:14px">Как это работает</div>
       <h2 class="site-about-title" style="margin:0;font-family:'Oswald',sans-serif;font-weight:700;color:#fff">Три шага до результата</h2>
       <p style="margin:22px 0 0;max-width:480px;font-size:16px;line-height:1.6;font-weight:500;color:#C5D4E4">Диктант проходит онлайн — пройти можно из любой точки с 3 по 12 декабря.</p>
     </div>
@@ -257,7 +239,7 @@
 
   <!-- ============ PARTNERS ============ -->
   <section class="reveal site-section" style="position:relative;background:#fff;padding:20px 56px 80px">
-    <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:34px;text-align:center">Организаторы и партнёры</div>
+    <h2 class="site-sec-title" style="margin:0 0 34px;font-family:'Oswald',sans-serif;font-weight:700;color:#163C62;text-align:center">Организаторы и партнёры</h2>
     <div class="site-partners-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch">
       <sc-for list="{{ partners }}" as="p" hint-placeholder-count="4">
         <div class="partner-cell" style-hover="transform:translateY(-6px)">
@@ -271,7 +253,6 @@
   <section id="faq" class="reveal site-section" style="position:relative;background:#F3F6FA;padding:82px 56px 96px">
     <div class="site-faq-layout" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:start">
       <div class="site-faq-sticky" style="position:sticky;top:96px">
-        <div class="site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:14px">Вопросы</div>
         <h2 class="site-faq-title" style="margin:0;font-family:'Oswald',sans-serif;font-weight:700;color:#163C62">Частые вопросы</h2>
         <p style="margin:22px 0 0;font-size:16px;line-height:1.6;font-weight:500;color:#4E637E">Не нашли ответ? Напишите нам — <a href="mailto:diktant@alrf.ru" style="color:#B8332E;border-bottom:1px solid #B8332E">diktant@alrf.ru</a></p>
       </div>
@@ -302,7 +283,6 @@
 
   <!-- ============ CTA ============ -->
   <section class="reveal site-section site-cta-section" style="position:relative;background:transparent;color:#fff;padding:112px 56px 96px;text-align:center;overflow:hidden">
-    <div class="site-kicker-on-dark site-sec-kicker" style="font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;color:#B8332E;margin-bottom:20px">3–12 декабря 2026</div>
     <h2 class="site-cta-title" style="margin:0 auto;max-width:900px;font-family:'Oswald',sans-serif;font-weight:700">Проверьте свою правовую грамотность</h2>
     <a href="#" class="btn-orange btn-orange-deep" style="display:inline-flex;align-items:center;gap:12px;margin-top:44px;color:#fff;font-family:'Oswald',sans-serif;font-size:18px;font-weight:600;letter-spacing:.03em;padding:18px 42px">Пройти диктант →</a>
   </section>
@@ -375,7 +355,6 @@ class Component extends DCLogic {
       this._scrollEndTimer = setTimeout(() => { this._isScrolling = false; }, 140);
       if (this._header) this._header.classList.toggle('shrink', (window.scrollY || 0) > 20);
       this.syncHeaderOffset();
-      this.updateHeaderLogo();
       document.querySelectorAll('.reveal').forEach(el => this.updateReveal(el));
       this.checkInView();
     };
@@ -508,7 +487,6 @@ class Component extends DCLogic {
       this._stats = Array.from(document.querySelectorAll('.stat-num'));
       this.initReveal();
       this.initCount();
-      this.updateHeaderLogo();
       this.syncHeaderOffset();
       this._onResizeHero = () => {
         if (!this._header) this._header = document.querySelector('.site-header');
@@ -568,15 +546,6 @@ class Component extends DCLogic {
       content.style.marginBottom = `${needH * (scale - 1)}px`;
       content.style.marginTop = `${Math.max(0, (availH - needH * scale) / 2)}px`;
     }
-  }
-
-  updateHeaderLogo(){
-    const shell = document.querySelector('.formal-shell');
-    const hero = this._heroEl || document.querySelector('[data-hero]');
-    if (!shell || !hero) return;
-    const headerH = this._header?.offsetHeight || 96;
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    shell.classList.toggle('logo-in-header', heroBottom <= headerH + 12);
   }
 
   checkInView(){
