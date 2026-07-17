@@ -136,8 +136,7 @@ html {
   }
 
   .site-cta-header {
-    font-size: 13px !important;
-    padding: 10px 18px !important;
+    display: none !important;
   }
 }
 

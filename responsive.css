@@ -226,12 +226,7 @@ body,
   }
 
   .site-cta-header {
-    width: 100% !important;
-    justify-content: center !important;
-    order: 2 !important;
-    margin-left: 0 !important;
-    font-size: 13px !important;
-    padding: 10px 18px !important;
+    display: none !important;
   }
 
   .site-hero {
